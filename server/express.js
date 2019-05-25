@@ -20,10 +20,22 @@ app.get('/js/builder.js', (request, response) => {
 app.get('/ts/builder.js', (request, response) => {
     response.sendfile('./resource/ts/builder.js');
 })
-app.post('/testPost',(request, response) => {
+let actionList = [];
+let id = 0;
+app.post('/add/action',(request, response) => {
   let body = JSON.parse(request.body);
+  body['id'] = id++;
+  actionList.push(body);
   console.log(body);
   response.send('good')
+})
+app.get('/action/list', (req, res)=>{
+    res.send(actionList);
+})
+app.delete('/delete/act', (req, res)=>{
+    actionList.splice(actionList.map(a=>a.id).indexOf(parseInt(req.body)),1);
+    console.log(req.body);
+    res.send('delete');
 })
 
 app.listen(port, (err) => {
