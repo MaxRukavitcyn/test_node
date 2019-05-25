@@ -31,5 +31,6 @@ const handler = (req, res)=>{
   }
   if(req.url === '/test'){
     res.end(human);
-  };
+  }
+};
 const server = http.createServer(handler).listen(3000, ()=>console.log('мой сервак пашет'));
