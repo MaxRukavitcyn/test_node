@@ -21,7 +21,7 @@ app.get('/ts/builder.js', (request, response) => {
     response.sendfile('./resource/ts/builder.js');
 })
 app.post('/testPost',(request, response) => {
-  let body = request.body;
+  let body = JSON.parse(request.body);
   console.log(body);
   response.send('good')
 })

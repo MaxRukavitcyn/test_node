@@ -39,7 +39,7 @@ function altGetData() {
 
 function sendDataAjax() {
 	let xhr = new XMLHttpRequest();
-	let body = "{id:'HUI'}";
+	let body = {'id':'HUI'};
 	
 	xhr.open("POST", '/testPost', true);
 	// xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -58,7 +58,7 @@ function sendDataAjax() {
 function sendData() {
 	fetch('/testPost', {
 		method: 'post',
-		body: 'id=HUI'
+		body: '{"id":"HUI"}'
 	}).then((res) => {
 		res.text().then(function (data) {
 			console.log(data);
