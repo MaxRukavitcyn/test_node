@@ -1,6 +1,10 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+const bodyParser = require("body-parser");
+const app = express();
+const port = 3000;
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.text());
+
 app.get('/', (request, response) => {
     response.sendfile('./resource/index.html');
 })
@@ -15,6 +19,11 @@ app.get('/js/builder.js', (request, response) => {
 })
 app.get('/ts/builder.js', (request, response) => {
     response.sendfile('./resource/ts/builder.js');
+})
+app.post('/testPost',(request, response) => {
+  let body = request.body;
+  console.log(body);
+  response.send('good')
 })
 
 app.listen(port, (err) => {
