@@ -14,4 +14,4 @@ console.log(emp1);
 
 console.log(f(sor, 'emp4.f1.q1')); //undefined
 
-console.log(sor.emp4.f1.q1) //error
+// console.log(sor.emp4.f1.q1) //error
