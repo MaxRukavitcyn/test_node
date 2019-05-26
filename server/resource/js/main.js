@@ -7,37 +7,40 @@ window.onload = () => {
 	fetch('/action/list')
 		.then((res) => {
 			res.json().then((actionList) => {
-				if(actionList.length){
-					for(let act of actionList){
-						builder.create('li').to(ul).setText(act.actionName).on('click', (e) => {
-							if (confirm('Удалить?')) {
-								ul.removeChild(e.path[0]);
-								deleteAct(act.id);
-							}
-						})
-					}
+				if (actionList.length) {
+					updateList(ul, actionList, builder);
 				}
 				builder.create('button').setText('добавить действие').to(div).on('click', (e) => {
 					let actionName = prompt('Введи действие', '');
-					sendActionName(actionName);
-					builder.create('li').to(ul).setText(actionName).on('click', (e) => {
-						if (confirm('Удалить?')) {
-							ul.removeChild(e.path[0]);
-							// deleteAct(id);
-						}
+					sendActionName(actionName).then((res) => {
+						res.json().then((actionList) => {
+							console.log(actionList);
+							ul.innerHTML = '';
+							updateList(ul, actionList, builder);
+						})
 					});
+					
 				})
-				console.log(actionList);
 			})
 		})
-
 };
+
+function updateList(parent, list, builder) {
+	for (let act of list) {
+		builder.create('li').to(parent).setText(act.actionName).on('click', (e) => {
+			if (confirm('Удалить?')) {
+				parent.removeChild(e.path[0]);
+				deleteAct(act.id);
+			}
+		})
+	}
+}
 
 function deleteAct(id) {
 	fetch('/delete/act', {
 		method: 'delete',
 		body: id
-	}).then((res)=>res.text().then((mess)=>console.log(mess)))
+	}).then((res) => res.text().then((mess) => console.log(mess)))
 }
 
 function getData() {
@@ -65,7 +68,7 @@ function altGetData() {
 
 function sendDataAjax() {
 	let xhr = new XMLHttpRequest();
-	let body = {'id':'HUI'};
+	let body = {'id': 'HUI'};
 	
 	xhr.open("POST", '/testPost', true);
 	// xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -82,12 +85,8 @@ function sendDataAjax() {
 }
 
 function sendActionName(actionName) {
-	fetch('/add/action', {
+	return fetch('/add/action', {
 		method: 'post',
 		body: JSON.stringify({actionName: actionName})
-	}).then((res) => {
-		res.text().then(function (data) {
-			console.log(data);
-		});
 	})
 }

@@ -27,7 +27,7 @@ app.post('/add/action',(request, response) => {
   body['id'] = id++;
   actionList.push(body);
   console.log(body);
-  response.send('good')
+  response.send(actionList)
 })
 app.get('/action/list', (req, res)=>{
     res.send(actionList);
