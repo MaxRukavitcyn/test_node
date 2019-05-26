@@ -14,6 +14,9 @@ app.get('/test', (request, response) => {
 app.get('/js/main.js', (request, response) => {
     response.sendfile('./resource/js/main.js');
 })
+app.get('/js/hui.js', (request, response) => {
+    response.sendfile('./resource/js/hui.js');
+})
 app.get('/js/builder.js', (request, response) => {
     response.sendfile('./resource/js/builder.js');
 })
