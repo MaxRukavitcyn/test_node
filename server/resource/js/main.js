@@ -12,18 +12,22 @@ window.onload = () => {
 				}
 				builder.create('button').setText('добавить действие').to(div).on('click', (e) => {
 					let actionName = prompt('Введи действие', '');
-					sendActionName(actionName).then((res) => {
-						res.json().then((actionList) => {
-							console.log(actionList);
-							ul.innerHTML = '';
-							updateList(ul, actionList, builder);
-						})
-					});
+					sendActionAndRenderList(actionName, ul, builder);
 					
 				})
 			})
 		})
 };
+
+function sendActionAndRenderList(actionName, tag, builder) {
+	sendActionName(actionName).then((res) => {
+		res.json().then((actionList) => {
+			console.log(actionList);
+			tag.innerHTML = '';
+			updateList(tag, actionList, builder);
+		})
+	});
+}
 
 function updateList(parent, list, builder) {
 	for (let act of list) {

@@ -23,6 +23,12 @@ app.get('/js/builder.js', (request, response) => {
 app.get('/ts/builder.js', (request, response) => {
     response.sendfile('./resource/ts/builder.js');
 })
+app.get('/js/lib/vue.js', (request, response) => {
+    response.sendfile('./resource/js/lib/vue.js');
+})
+app.get('/js/vue/main.model.js', (request, response) => {
+    response.sendfile('./resource/js/vue/main.model.js');
+})
 let actionList = [];
 let id = 0;
 app.post('/add/action',(request, response) => {
