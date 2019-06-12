@@ -21,9 +21,9 @@
     <hr>
     <div>
         <label for="elementNumber">number </label>
-        <input id="elementNumber" type="text" v-model="number" @keyup="handlerKeypress"> <br>
+        <input id="elementNumber" type="number" v-model="number" @keyup="handlerKeypress"> <br>
         <label for="element">element</label>
-        <input id="element" type="text" v-model="elem" @keyup.enter="changeElement" @keyup.up="handlerKeypress"> <br>
+        <input id="element" type="text" v-model="elem" @keyup="handlerKeypress"> <br>
         <button @click="changeElement">change</button>
         <br>
         list:

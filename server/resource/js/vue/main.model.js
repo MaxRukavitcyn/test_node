@@ -29,26 +29,16 @@
 			elem: '',
 			number: 0
 		},
-		watch: {
-			list(newVal, oldVal){
-				console.log(newVal)
-			}
-		},
 		methods: {
 			handlerKeypress(e){
 				console.log(e);
-				if(e.code === 'ArrowDown') {
-					let input = document.getElementById("element");
-					input.focus();
-				}
-				if(e.code === 'ArrowUp') {
-					let input = document.getElementById("elementNumber");
-					input.focus();
-				}
-				if(e.code === 'Delete') {
-					this.removeElement(this.number)
-				}
-				
+				let inputNumber = document.getElementById("elementNumber");
+				if(e.code === 'ArrowUp')
+					inputNumber.focus();
+				if(e.code === 'Delete')
+					this.removeElement(this.number);
+				if(e.code === 'Enter')
+					this.changeElement();
 			},
 			removeElement(i){
 				this.list.splice(i,1);
