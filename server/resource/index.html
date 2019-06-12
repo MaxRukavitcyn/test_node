@@ -17,6 +17,17 @@
     <br>
     <div id="app">
       <test-comp @submit="sendData"></test-comp>
+      <br>
+      <hr>
+      <label for="elementNumber">number </label>
+      <input id="elementNumber" type="text" v-model="number"> <br>
+      <label for="element">element</label>
+      <input id="element" type="text" v-model="elem"> <br>
+      <button @click="changeElement">change</button> <br>
+      list:
+      <ul>
+        <li v-for="el in list">{{el}}</li>
+      </ul>
     </div>
 
     <script src="js/lib/vue.js"></script>

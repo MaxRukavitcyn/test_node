@@ -24,9 +24,20 @@
 	let vm = new Vue({
 		el: '#app',
 		data: {
-			title: 'hui'
+			title: 'hui',
+			list: [],
+			elem: '',
+			number: 0
+		},
+		watch: {
+			list(newVal, oldVal){
+				console.log(newVal)
+			}
 		},
 		methods: {
+			changeElement(){
+				Vue.set(this.list, this.number, this.elem)
+			},
 			sendData(tit){
 				let builder = new Builder();
 				let ul = builder.get('ul', 0);
@@ -34,5 +45,6 @@
 				
 			}
 		}
-	})
+	});
+	window.vm = vm;
 })();
