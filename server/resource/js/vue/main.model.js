@@ -35,6 +35,24 @@
 			}
 		},
 		methods: {
+			handlerKeypress(e){
+				console.log(e);
+				if(e.code === 'ArrowDown') {
+					let input = document.getElementById("element");
+					input.focus();
+				}
+				if(e.code === 'ArrowUp') {
+					let input = document.getElementById("elementNumber");
+					input.focus();
+				}
+				if(e.code === 'Delete') {
+					this.removeElement(this.number)
+				}
+				
+			},
+			removeElement(i){
+				this.list.splice(i,1);
+			},
 			changeElement(){
 				Vue.set(this.list, this.number, this.elem)
 			},
