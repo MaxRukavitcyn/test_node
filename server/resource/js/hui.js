@@ -22,7 +22,7 @@ class Array2 {
 	}
 }
 let f = (res, key)=>key.split('.').reduce((acc, key)=>acc && acc[key]? acc[key] : undefined, res);
-let emp1 = f(sor, 'emp2.f1.q1');
+// let emp1 = f(sor, 'emp2.f1.q1');
 console.log(emp1);
 
 emp1 = sor.emp2.f1.q1;
