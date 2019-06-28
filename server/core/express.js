@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require("body-parser");
-const apiController = require('./apiController');
-const resourceController = require('./resourceController');
+const apiController = require('./controllers/apiController');
+const resourceController = require('./controllers/resourceController');
 
 const app = express();
 const port = 3000;
