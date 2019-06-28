@@ -1,10 +1,12 @@
 'use strict';
+let baseUrl = 'http://localhost:3000';
 window.onload = () => {
+	
 	let builder = new Builder();
 	let div = builder.get('div', 0);
 	builder.create('ul').to(div);
 	let ul = builder.get('ul', 0);
-	fetch('/action/list')
+	fetch(baseUrl+'/action/list')
 		.then((res) => {
 			res.json().then((actionList) => {
 				if (actionList.length) {
@@ -41,7 +43,7 @@ function updateList(parent, list, builder) {
 }
 
 function deleteAct(id) {
-	fetch('/delete/act', {
+	fetch(baseUrl+'/delete/act', {
 		method: 'delete',
 		body: id
 	}).then((res) => res.text().then((mess) => console.log(mess)))
@@ -49,7 +51,7 @@ function deleteAct(id) {
 
 function getData() {
 	let xhr = new XMLHttpRequest();
-	xhr.open('GET', 'test', true);
+	xhr.open('GET', baseUrl+'test', true);
 	xhr.send();
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState !== 4) return;
@@ -62,7 +64,7 @@ function getData() {
 }
 
 function altGetData() {
-	fetch('/test')
+	fetch(baseUrl+'/test')
 		.then((res) => {
 			res.json().then((data) => {
 				console.log(data);
@@ -74,7 +76,7 @@ function sendDataAjax() {
 	let xhr = new XMLHttpRequest();
 	let body = {'id': 'HUI'};
 	
-	xhr.open("POST", '/testPost', true);
+	xhr.open("POST", baseUrl+'/testPost', true);
 	// xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	
 	xhr.onreadystatechange = function () {
@@ -89,7 +91,7 @@ function sendDataAjax() {
 }
 
 function sendActionName(actionName) {
-	return fetch('/add/action', {
+	return fetch(baseUrl+'/add/action', {
 		method: 'post',
 		body: JSON.stringify({actionName: actionName})
 	})

@@ -5,7 +5,7 @@ let conf = {
 	output: {
 		path: path.resolve(__dirname, './server/resource/dist'), //путь к папке в которую кладем файл main.js, путь делается абсолютным через модуль path
 		filename: "bundle.js",
-		publicPath: "dist/" //подставляем папку dist и теперь можем не пересобирать, изменения будут отображаться в браузере на лету
+		publicPath: "server/resource/dist/" //подставляем папку dist и теперь можем не пересобирать, изменения будут отображаться в браузере на лету
 	},
 	devServer: {
 		overlay: true  //вывод ошибок прямо в браузере, не нужно смотреть ошибку в консоли
