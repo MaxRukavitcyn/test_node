@@ -5,7 +5,7 @@ paths.get('/', (request, response) => {
 	response.sendfile('./resource/index.html');
 });
 paths.get('/dist/bundle.js', (request, response) => {
-	response.sendfile('./resource/js/hui.js');
+	response.sendfile('./resource/dist/bundle.js');
 });
 paths.get('/js/main.js', (request, response) => {
 	response.sendfile('./resource/js/main.js');
