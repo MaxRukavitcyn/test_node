@@ -8,7 +8,12 @@ let conf = {
 		publicPath: "server/resource/dist/" //подставляем папку dist и теперь можем не пересобирать, изменения будут отображаться в браузере на лету
 	},
 	devServer: {
-		overlay: true  //вывод ошибок прямо в браузере, не нужно смотреть ошибку в консоли
+		overlay: true,  //вывод ошибок прямо в браузере, не нужно смотреть ошибку в консоли
+		proxy: {
+			'/': "http://localhost:3000",
+			"secure": false,
+			"changeOrigin": true
+		}
 	},
 	module: {
 		rules: [  //указание правил

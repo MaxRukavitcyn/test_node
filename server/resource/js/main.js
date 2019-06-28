@@ -51,7 +51,7 @@ function deleteAct(id) {
 
 function getData() {
 	let xhr = new XMLHttpRequest();
-	xhr.open('GET', baseUrl+'test', true);
+	xhr.open('GET', baseUrl+'/test', true);
 	xhr.send();
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState !== 4) return;

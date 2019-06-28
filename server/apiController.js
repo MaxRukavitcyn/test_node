@@ -10,7 +10,7 @@ let corsOptions = {
 paths.get('/test/router', cors(corsOptions), function (req, res) {
 	res.send('router is working');
 });
-paths.get('/test', (request, response) => {
+paths.get('/test', cors(corsOptions), (request, response) => {
 	response.send({'firstName':'Max', 'lastName': 'Hand'});
 });
 let actionList = [];
