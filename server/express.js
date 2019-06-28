@@ -1,7 +1,9 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require("body-parser");
 const apiController = require('./apiController');
 const resourceController = require('./resourceController');
+
 const app = express();
 const port = 3000;
 app.use(bodyParser.urlencoded({ extended: false }));

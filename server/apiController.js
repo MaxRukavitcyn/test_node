@@ -1,7 +1,13 @@
 const express = require('express');
+const cors = require('cors');
 const paths = express();
 
-paths.get('/test/router', function (req, res) {
+let corsOptions = {
+	origin: 'http://localhost:8080',
+	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+paths.get('/test/router', cors(corsOptions), function (req, res) {
 	res.send('router is working');
 });
 paths.get('/test', (request, response) => {
@@ -9,17 +15,17 @@ paths.get('/test', (request, response) => {
 });
 let actionList = [];
 let id = 0;
-paths.post('/add/action',(request, response) => {
+paths.post('/add/action', cors(corsOptions), (request, response) => {
 	let body = JSON.parse(request.body);
 	body['id'] = id++;
 	actionList.push(body);
 	console.log(body);
 	response.send(actionList)
 });
-paths.get('/action/list', (req, res)=>{
+paths.get('/action/list', cors(corsOptions), (req, res)=>{
 	res.send(actionList);
 });
-paths.delete('/delete/act', (req, res)=>{
+paths.delete('/delete/act', cors(corsOptions), (req, res)=>{
 	actionList.splice(actionList.map(a=>a.id).indexOf(parseInt(req.body)),1);
 	console.log(req.body);
 	res.send('delete');
