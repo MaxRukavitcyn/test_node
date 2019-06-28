@@ -44,7 +44,7 @@ function updateList(parent, list, builder) {
 
 function deleteAct(id) {
 	fetch(baseUrl+'/delete/act', {
-		method: 'delete',
+		method: 'post',
 		body: id
 	}).then((res) => res.text().then((mess) => console.log(mess)))
 }

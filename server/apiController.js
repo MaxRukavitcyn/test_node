@@ -25,7 +25,7 @@ paths.post('/add/action', cors(corsOptions), (request, response) => {
 paths.get('/action/list', cors(corsOptions), (req, res)=>{
 	res.send(actionList);
 });
-paths.delete('/delete/act', cors(corsOptions), (req, res)=>{
+paths.post('/delete/act', cors(corsOptions), (req, res)=>{
 	actionList.splice(actionList.map(a=>a.id).indexOf(parseInt(req.body)),1);
 	console.log(req.body);
 	res.send('delete');

@@ -5,6 +5,7 @@
     <!--<script src="js/builder.js"></script>-->
     <script src="js/main.js"></script>
     <script src="js/builder.js"></script>
+    <link rel="stylesheet" href="css/all.css">
 
     <title>TEST</title>
 </head>
@@ -21,7 +22,7 @@
     <hr>
     <div>
         <label for="elementNumber">number </label>
-        <input id="elementNumber" type="number" v-model="number" @keyup="handlerKeypress"> <br>
+        <input id="elementNumber" class="pos" type="number" v-model="number" @keyup="handlerKeypress"> <br>
         <label for="element">element</label>
         <input id="element" type="text" v-model="elem" @keyup="handlerKeypress"> <br>
         <button @click="changeElement">change</button>

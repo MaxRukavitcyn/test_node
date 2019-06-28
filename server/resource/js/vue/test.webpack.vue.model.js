@@ -1,7 +1,7 @@
 import {testComp} from "./test.comp";
 
 Vue.component('test-comp2', {
-	template: `<div>test-comp2 working!!!123123123</div>`
+	template: `<div>test-comp2 working!!!</div>`
 });
 
 

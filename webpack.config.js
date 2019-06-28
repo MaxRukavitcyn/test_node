@@ -9,11 +9,11 @@ let conf = {
 	},
 	devServer: {
 		overlay: true,  //вывод ошибок прямо в браузере, не нужно смотреть ошибку в консоли
-		proxy: {
-			'/': "http://localhost:3000",
-			"secure": false,
-			"changeOrigin": true
-		}
+		// proxy: {
+		// 	'/': "http://localhost:3000",
+		// 	"secure": false,
+		// 	"changeOrigin": true
+		// }
 	},
 	module: {
 		rules: [  //указание правил
