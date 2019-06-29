@@ -5,4 +5,3 @@ import {vm} from "./vue/main.model";
 import {getData} from "./render.list.action";
 import {altGetData} from "./render.list.action";
 
-renderList();

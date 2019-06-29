@@ -1,9 +1,14 @@
 'use strict';
 let baseUrl = 'http://localhost:3000';
 import {Builder} from "./builder";
-export function renderList(){
+export function renderList(tag){
 	let builder = new Builder();
-	let div = builder.get('div', 1);
+	let div = null;
+	if(tag){
+		div = tag;
+	} else {
+		div = builder.get('div', 1);
+	}
 	builder.create('ul').to(div);
 	let ul = builder.get('ul', 0);
 	fetch(baseUrl + '/action/list')
@@ -51,7 +56,7 @@ function deleteAct(id) {
 	}).then((res) => res.text().then((mess) => console.log(mess)))
 }
 
-export function getData() {
+function getData() {
 	let xhr = new XMLHttpRequest();
 	xhr.open('GET', baseUrl + '/test', true);
 	xhr.send();
@@ -65,7 +70,7 @@ export function getData() {
 	}
 }
 
-export function altGetData() {
+function altGetData() {
 	fetch(baseUrl + '/test')
 		.then((res) => {
 			res.json().then((data) => {

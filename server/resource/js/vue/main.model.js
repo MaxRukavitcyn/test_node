@@ -1,29 +1,11 @@
-let templ = `
-		<div>
-			<input type="text" v-model="tit"> <br>
-			<button @click="submit" >send</button>
-		</div>
-	
-	`;
-Vue.component('test-comp', {
-	template: templ,
-	data() {
-		return {
-			tit: ''
-		}
-	},
-	methods: {
-		submit() {
-			this.$emit('submit', this.tit)
-		}
-	}
-});
+
 import {Builder} from "../builder";
 import {treeComp} from "./v.tree.comp";
 import {sendActionAndRenderList} from '../render.list.action';
 import VueRouter from 'vue-router';
 import {routes} from "./router";
-
+import {vListAction} from "./v.list.action";
+Vue.component('v-list-action', vListAction);
 let router = new VueRouter({
 	routes: routes
 })
@@ -57,12 +39,6 @@ export let vm = new Vue({
 		},
 		changeElement() {
 			Vue.set(this.list, this.number, this.elem)
-		},
-		sendData(tit) {
-			let builder = new Builder();
-			let ul = builder.get('ul', 0);
-			sendActionAndRenderList(tit, ul, builder);
-			
 		}
 	}
 });

@@ -12,20 +12,10 @@
 <body>
 <div id="app">
 
-    <router-link to="/tree">tree</router-link>
+    <div @click="hideList"><router-link to="/tree">tree</router-link></div>
 
     <router-view></router-view>
-
-    <div id="action-list" v-show="showList">
-
-        <button onclick="getData()">get data by ajax</button>
-        <button onclick="altGetData()">get data by fetch</button>
-        <div class="buisness-list">
-            <h1>Список дел:</h1>
-        </div>
-        <br>
-        <test-comp @submit="sendData"></test-comp>
-    </div>
+    <v-list-action></v-list-action>
     <br>
     <hr>
     <div>
