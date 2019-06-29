@@ -5,6 +5,8 @@ import {sendActionAndRenderList} from '../render.list.action';
 import VueRouter from 'vue-router';
 import {routes} from "./router";
 import {vListAction} from "./v.list.action";
+import {vListChange} from "./v.list.change";
+Vue.component('v-list-change', vListChange);
 Vue.component('v-list-action', vListAction);
 let router = new VueRouter({
 	routes: routes

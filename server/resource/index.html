@@ -13,6 +13,7 @@
 <div id="app">
 
     <div @click="hideList"><router-link to="/tree">tree</router-link></div>
+    <div @click="hideList"><router-link to="/list/name">list</router-link></div>
 
     <router-view></router-view>
     <v-list-action></v-list-action>
@@ -30,6 +31,7 @@
             <li v-for="(element, i) in list" @dblclick="removeElement(i)">{{element}}</li>
         </ul>
     </div>
+    <br>
 </div>
 
 <script src="js/lib/vue.js"></script>
