@@ -1,4 +1,4 @@
-class Builder {
+export class Builder {
   constructor(){}
   create(tagName){
     this.elem = document.createElement(tagName);
