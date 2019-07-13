@@ -1,21 +1,52 @@
-
-import {Builder} from "../builder";
-import {treeComp} from "./v.tree.comp";
-import {sendActionAndRenderList} from '../render.list.action';
+import {vTreeComp} from "./v.tree.comp";
 import VueRouter from 'vue-router';
 import {routes} from "./router";
 import {vListAction} from "./v.list.action";
 import {vListChange} from "./v.list.change";
-Vue.component('v-list-change', vListChange);
-Vue.component('v-list-action', vListAction);
 let router = new VueRouter({
 	routes: routes
 })
+
+let treeData = {
+	name: 'My Tree',
+	children: [
+		{ name: 'hello' },
+		{ name: 'wat' },
+		{
+			name: 'child folder',
+			children: [
+				{
+					name: 'child folder',
+					children: [
+						{ name: 'hello' },
+						{ name: 'wat' }
+					]
+				},
+				{ name: 'hello' },
+				{ name: 'wat' },
+				{
+					name: 'child folder',
+					children: [
+						{ name: 'hello' },
+						{ name: 'wat' }
+					]
+				}
+			]
+		}
+	]
+};
+
+
 export let vm = new Vue({
 	el: '#app',
 	router: router,
-	components: {'tree-comp': treeComp},
+	components: {
+		'tree-item': vTreeComp,
+		'v-list-change': vListChange,
+		'v-list-action': vListAction
+	},
 	data: {
+		treeData: treeData,
 		title: 'hui',
 		list: [],
 		elem: '',
