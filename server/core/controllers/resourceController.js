@@ -23,6 +23,9 @@ paths.get('/js/builder.js', (request, response) => {
 paths.get('/js/lib/vue.js', (request, response) => {
 	response.sendfile(path.resolve('../resource/js/lib/vue.js'));
 });
+paths.get('/js/ninja/simple.js', (request, response) => {
+	response.sendfile(path.resolve('../resource/js/ninja/simple.js'));
+});
 paths.get('/js/vue/main.model.js', (request, response) => {
 	response.sendfile(path.resolve('../resource/js/vue/main.model.js'));
 });

@@ -13,7 +13,7 @@
 <button onclick="getData()">get data by ajax</button>
 <button onclick="altGetData()">get data by fetch</button>
 <div class="buisness-list">
-    <h1>Список дел:</h1>
+    <h1 id="h1">Список дел:</h1>
 </div>
 <br>
 <div id="app">
@@ -36,12 +36,16 @@
 
 <div id="app2">{{mess}}
 
-    <test-comp></test-comp>
+    <test-comp :css="{'background': 'rgba(220,20,60,0.39)', 'width': '50%'}" v-model="testModel"></test-comp>
     <test-comp2></test-comp2>
+    {{testModel}}
 </div>
+
+<button id="test">push me</button>
 
 <script src="js/lib/vue.js"></script>
 <script src="dist/bundle.js"></script>
 <script src="js/vue/main.model.js"></script>
+<script src="js/ninja/simple.js"></script>
 </body>
 </html>

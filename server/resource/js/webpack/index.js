@@ -1,4 +1,3 @@
 import {TestProxy} from "./test.proxy";
 import {vm2} from "../vue/test.webpack.vue.model";
-
-new TestProxy().test();
+import {globalNinja} from "../ninja/ninja";
