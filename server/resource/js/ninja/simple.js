@@ -17,3 +17,5 @@ let elem = document.getElementById('test');
 let foo = button.click.bind(button);
 
 elem.addEventListener('click', foo);
+
+
