@@ -5,7 +5,7 @@ function assert(isTrue, message){
 
 function Button(){
 	this.clicked = false;
-	this.click = function(){
+	this.click = ()=>{
 		this.clicked = true;
 		assert(button.clicked, 'button has been clicked');
 	}
@@ -14,6 +14,24 @@ function Button(){
 let button = new Button();
 
 let elem = document.getElementById('test');
-let foo = button.click.bind(button);
+// let foo = button.click.bind(button);
 
-elem.addEventListener('click', foo);
+elem.addEventListener('click', button.click);
+
+const GLOBAL = 'global';
+function globalFn() {
+	let outer = 'outer';
+
+	function outerFn() {
+		let inner = 'inner';
+		console.log(outer, GLOBAL);
+
+		function innerFn() {
+			console.log(inner, outer, GLOBAL);
+		}
+
+		innerFn();
+	}
+	outerFn()
+}
+globalFn();

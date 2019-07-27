@@ -37,7 +37,7 @@
 <div id="app2">{{mess}}
 
     <test-comp :css="{'background': 'rgba(220,20,60,0.39)', 'width': '50%'}" v-model="testModel"></test-comp>
-    <test-comp2></test-comp2>
+    <test-comp2 v-slot="slotProps" >{{slotProps.user.firstName}} {{slotProps.user.lastName}}</test-comp2>
     {{testModel}}
 </div>
 

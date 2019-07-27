@@ -1,7 +1,15 @@
 import {testComp} from "./test.comp";
 
 Vue.component('test-comp2', {
-	template: `<div>test-comp2 working!!!</div>`
+	template: `<div>
+					<slot :user="user">{{defMess}}</slot>
+             </div>`,
+	data(){
+		return {
+			user: {firstName: 'Maxim', lastName: 'Hand'},
+			defMess: 'user not defined'
+		}
+	}
 });
 
 
