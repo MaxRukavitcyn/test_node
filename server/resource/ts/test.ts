@@ -5,3 +5,4 @@ class Hui{
 }
 
 let hui = new Hui();
+console.log(hui);
