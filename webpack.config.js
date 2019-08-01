@@ -33,6 +33,10 @@ let conf = {
 					'css-loader'
 				]
 				*/
+			},
+			{
+				test: /\.ts$/,
+				loader: 'awesome-typescript-loader'
 			}
 		]
 	},
