@@ -9,6 +9,7 @@
     "build": "webpack --mode production"
   },
   "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-polyfill": "6.26.0",
@@ -22,6 +23,7 @@
     "path": "^0.12.7",
     "style-loader": "^0.23.1",
     "tslint": "^5.13.1",
+    "typescript": "^3.5.3",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
