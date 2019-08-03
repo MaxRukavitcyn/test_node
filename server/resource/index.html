@@ -2,9 +2,6 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <!--<script src="js/builder.js"></script>-->
-    <!--<script src="js/render.list.action.js"></script>-->
-    <!--<script src="js/builder.js"></script>-->
     <link rel="stylesheet" href="css/all.css">
 
     <title>TEST</title>
@@ -12,28 +9,13 @@
 <body>
 <div id="app">
 
-    <div @click="hideList"><router-link to="/tree">tree</router-link></div>
-    <div @click="hideList"><router-link to="/list/name">list</router-link></div>
-
-    <router-view></router-view>
-    <v-list-action></v-list-action>
-
-
-    <br>
-    <hr>
-    <div>
-        <label for="elementNumber">number </label>
-        <input id="elementNumber" class="pos" type="number" v-model="number" @keyup="handlerKeypress"> <br>
-        <label for="element">element</label>
-        <input id="element" type="text" v-model="elem" @keyup="handlerKeypress"> <br>
-        <button style="margin-top: 5px;" @click="changeElement">change</button>
-        <br>
-        list:
-        <ul>
-            <li v-for="(element, i) in list" @dblclick="removeElement(i)">{{element}}</li>
-        </ul>
+    <div class="links-bar">
+        <div @click="hideList"><router-link to="/tree">дерево</router-link></div>
+        <div @click="hideList"><router-link to="/list/name">список</router-link></div>
+        <div @click="hideList"><router-link to="/tree/custom">дерево свое хрень</router-link></div>
+        <div @click="hideList"><router-link to="/list/action">список дел</router-link></div>
     </div>
-    <br>
+    <router-view></router-view>
 </div>
 
 <script src="js/lib/vue.js"></script>

@@ -3,9 +3,11 @@ import VueRouter from 'vue-router';
 import {routes} from "./router";
 import {vListAction} from "./v.list.action";
 import {vListChange} from "./v.list.change";
+import {vTreeCustom} from "./v.tree.custom";
+
 let router = new VueRouter({
 	routes: routes
-})
+});
 
 let treeData = {
 	name: 'My Tree',
@@ -43,7 +45,8 @@ export let vm = new Vue({
 	components: {
 		'tree-item': vTreeComp,
 		'v-list-change': vListChange,
-		'v-list-action': vListAction
+		'v-list-action': vListAction,
+		'v-tree-custom': vTreeCustom
 	},
 	data: {
 		treeData: treeData,

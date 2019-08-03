@@ -42,3 +42,7 @@
     padding-left: 50px;
     left: 65px;
 }
+.links-bar div {
+    width: 10em;
+    display: inline-block;
+}
