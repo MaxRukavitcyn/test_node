@@ -1,4 +1,4 @@
-class Builder {
+export class Builder {
   constructor(){}
   create(tagName){
     this.elem = document.createElement(tagName);
@@ -13,9 +13,14 @@ class Builder {
     this.elem.textContent = text;
     return this;
   }
-  get(tagName, index){
-    this.elems = document.querySelectorAll(tagName);
-    this.elem = this.elems[index];
+  get(tagName, id){
+    if(isNaN(id) && !tagName) {
+      this.elem = document.getElementById(id);
+    } else {
+      this.elems = document.querySelectorAll(tagName);
+      this.elem = this.elems[id];
+    }
+    
     return this.elem;
   }
   on(eventName, callback){

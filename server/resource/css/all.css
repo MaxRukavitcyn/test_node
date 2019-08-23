@@ -1,3 +1,7 @@
 .pos {
     margin: 5px 5px 5px 2px;
 }
+
+.hidden {
+    visibility: hidden;
+}
