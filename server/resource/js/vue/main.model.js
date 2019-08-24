@@ -42,12 +42,12 @@ let treeData = {
 export let vm = new Vue({
 	el: '#app',
 	router: router,
-	components: {
-		'tree-item': vTreeComp,
-		'v-list-change': vListChange,
-		'v-list-action': vListAction,
-		'v-tree-custom': vTreeCustom
-	},
+	// components: {
+	// 	'tree-item': vTreeComp,
+	// 	'v-list-change': vListChange,
+	// 	'v-list-action': vListAction,
+	// 	'v-tree-custom': vTreeCustom
+	// },
 	data: {
 		treeData: treeData,
 		title: 'hui',

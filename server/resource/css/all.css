@@ -46,3 +46,39 @@
     width: 10em;
     display: inline-block;
 }
+/*select*/
+.select input {
+    width: 200px;
+    color: black;
+    background-color: #e0e0df;
+    position: relative;
+    top: 4px;
+    left: 3px;
+}
+.select-wrapper {
+    padding-top: 0px;
+    border: black 1px solid;
+    width: 210px;
+    height: 30px;
+}
+.select-list {
+    list-style-type: none;
+}
+.select-list-outer-div {
+    position: relative;
+    left: -35px;
+    width: 205px;
+    padding-right: 0px;
+    padding-left: 0px;
+    cursor: pointer;
+}
+.target :hover {
+    background: aquamarine;
+}
+.links-bar>div {
+    background: bisque;
+    text-align: center;
+}
+.links-bar>div:hover {
+    background: aliceblue;
+}
