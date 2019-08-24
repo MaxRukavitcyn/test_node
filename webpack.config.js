@@ -1,7 +1,7 @@
 let path = require('path'); //подгружаем модуль path для того что бы пути делать абсолютныыми
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 let conf = {
-	entry: './server/resource/js/webpack/index.js', //точка входа
+	entry: './server/resource/js/index.js', //точка входа
 	output: {
 		path: path.resolve(__dirname, './server/resource/dist'), //путь к папке в которую кладем файл main.js, путь делается абсолютным через модуль path
 		filename: "bundle.js",

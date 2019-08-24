@@ -3,7 +3,7 @@ const cors = require('cors');
 const paths = express();
 
 let corsOptions = {
-	origin: 'http://localhost:8080',
+	origins: ['http://localhost:8080', 'http://localhost'],
 	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 

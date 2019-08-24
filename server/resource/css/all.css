@@ -1,3 +1,84 @@
 .pos {
     margin: 5px 5px 5px 2px;
 }
+
+.hidden {
+    visibility: hidden;
+}
+.ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    position: relative;
+}
+.li {
+    list-style-type: none;
+    /*border-right: 2px solid #000;*/
+    margin-left: 1em;
+}
+.li div {
+    padding-left: 1em;
+    position: relative;
+}
+.li div::before {
+    content:'';
+    position: relative;
+    top: 15px;
+    padding-left: 16px;
+    left: 65px;
+    bottom: 50%;
+    width: 0.75em;
+    border: 2px solid #000;
+    border-bottom: 0 none transparent;
+    border-left: 0 none transparent;
+}
+.ul > li:last-child {
+    border-left: 2px solid transparent;
+}
+.no-child div::before {
+    content:'';
+    position: relative;
+    top: 15px;
+    padding-left: 50px;
+    left: 65px;
+}
+.links-bar div {
+    width: 10em;
+    display: inline-block;
+}
+/*select*/
+.select input {
+    width: 200px;
+    color: black;
+    background-color: #e0e0df;
+    position: relative;
+    top: 4px;
+    left: 3px;
+}
+.select-wrapper {
+    padding-top: 0px;
+    border: black 1px solid;
+    width: 210px;
+    height: 30px;
+}
+.select-list {
+    list-style-type: none;
+}
+.select-list-outer-div {
+    position: relative;
+    left: -35px;
+    width: 205px;
+    padding-right: 0px;
+    padding-left: 0px;
+    cursor: pointer;
+}
+.target :hover {
+    background: aquamarine;
+}
+.links-bar>div {
+    background: bisque;
+    text-align: center;
+}
+.links-bar>div:hover {
+    background: aliceblue;
+}
