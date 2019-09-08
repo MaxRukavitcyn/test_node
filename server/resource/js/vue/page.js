@@ -5,8 +5,10 @@ let template = `
 				<div>
 					<h1>Фильмотека</h1>
 					<br>
-					<v-select @input="changeLink" :model="model"></v-select>
-					<v-films :link="link" class="film-container"></v-films>
+					<div style="position: relative; display: inline-block" >
+						<v-select @input="changeLink" :model="model"></v-select>
+						<v-films :link="link" class="film-container"></v-films>
+					</div>
 				</div>
 `;
 
