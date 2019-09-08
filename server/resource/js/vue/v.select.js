@@ -43,7 +43,7 @@ export let vSelect = {
 			this.val = value
 		},
 		send(){
-			this.$emit('input', this.val.link)
+			this.$emit('input', this.val.filmLink)
 		},
 		clean(){
 			this.val = '';
