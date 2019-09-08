@@ -87,3 +87,7 @@
     top: 38px;
     z-index: -1;
 }
+
+body {
+    background: rgba(202, 238, 252, 0.55);
+}

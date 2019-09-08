@@ -9,9 +9,9 @@ let template = `<div>
 						<span v-if="!model || model.list.length === 0" style="position: relative;left: 60px;">нет данных</span>
 							<ul class="select-list">
 								<li v-for="(l, index) in list">
-									<div class="select-list-outer-div target" @click="target(l)">
+									<div class="select-list-outer-div target" @click="input(l)">
 										<div style="position: relative;left: -3px;">
-											<span style="position: relative; left: 10px;">{{l.name}}</span>
+											<span style="position: relative; left: 10px;"">{{l.name}}</span>
 										</div>
 									</div>
 								</li>
@@ -39,9 +39,6 @@ export let vSelect = {
 		}
 	},
 	methods: {
-		target(value){
-			this.val = value
-		},
 		send(){
 			this.$emit('input', this.val.filmLink)
 		},
@@ -50,6 +47,11 @@ export let vSelect = {
 		},
 		open(){
 			this.show = !this.show;
+		},
+		input(value){
+			this.val = value;
+			this.send();
+			this.open();
 		}
 	}
 };
