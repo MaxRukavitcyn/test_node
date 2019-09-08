@@ -5,6 +5,7 @@ import {vListAction} from "./v.list.action";
 import {data} from "./store.data";
 import {vSelect} from "./v.select";
 import {vPageTest} from "./page";
+import {vFilms} from "./v.films";
 
 let treeData = {
 	name: 'My Tree',
@@ -33,5 +34,6 @@ export let routes = [
 	{path: '/list/name', component: vListChange},
 	{path: '/tree/custom', component: vTreeCustom, props: {model: data}},
 	{path: '/list/action', component: vListAction},
-	{path: '/test/page', component: vPageTest}
+	{path: '/test/page', component: vPageTest},
+	{path: '/films', component: vFilms}
 ];

@@ -15,9 +15,9 @@ export let globalNinja =  (function () {
 	}
 	function getRepeats(words){
 		let res={};
-		words.forEach((a,i)=>{
+		words.forEach((a,i, arr)=>{
 			let count=1;
-			words.forEach((b,j)=>{
+			arr.forEach((b,j)=>{
 				if(a===b && i!==j){
 					count++;
 				}
@@ -53,5 +53,17 @@ export let globalNinja =  (function () {
 		['Мария'],
 		['Иннокентий', 'жёлтый', 'пельмени', '18', 'Азовское']
 	];
-	log(getData(keys, values))
+	log(getData(keys, values));
+	let words = ['hui', 'her', 'hui', 'max', 'max'];
+	log(words, getRepeats(words));
+//=======================================================================================================================
+	let g;
+	function globalFn() {
+		let res = 'source';
+		this.getRes = (name) => {
+			return res + ' '+ name;
+		};
+	}
+	g = new globalFn();
+	log(g.getRes('max'));
 })();
