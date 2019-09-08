@@ -82,3 +82,8 @@
 .links-bar>div:hover {
     background: aliceblue;
 }
+.film-container {
+    position: absolute;
+    top: 169px;
+    z-index: -1;
+}
