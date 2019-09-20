@@ -2,9 +2,8 @@ import {TestProxy} from "./test.proxy";
 import {MapperData} from "./mapper.data";
 import {vm} from "./vue/main.model";
 import {globalNinja} from "./ninja/ninja";
-import {test} from "./ninja/test.ninja";
 // new TestProxy().test();
-test()
+
 let data = [
 	{name: 'Nick', id: 0},
 	{name: 'Max', id: 2, pId: 0},

@@ -29,7 +29,8 @@ export let vPageTest = {
 					{id:2, name: 'Брат', filmLink: 'https://www.youtube.com/embed/aDaaCGZz-Ok'},
 					{id:3, name: 'Брат-2', filmLink: 'https://www.youtube.com/embed/K9TRaGNnjEU'},
 					{id:4, name: 'Пятый элемент', filmLink: 'https://www.youtube.com/embed/HSU7iYPnqYM'},
-					{id:5, name: 'Иван Васильевич меняет профессию', filmLink: 'https://www.youtube.com/embed/a50qT9bW2Qo'}
+					{id:5, name: 'Иван Васильевич меняет профессию', filmLink: 'https://www.youtube.com/embed/a50qT9bW2Qo'},
+					{id:6, name:'клюква шоу - Mutter', filmLink: 'https://www.youtube.com/embed/dkwmVwlwhKU'}
 					]
 			}
 			
