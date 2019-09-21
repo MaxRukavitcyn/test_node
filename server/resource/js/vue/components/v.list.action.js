@@ -22,8 +22,8 @@ let template = ` <div>
 					<v-btn @click="sendData" >send</v-btn>
 				</div>`;
 
-import {Builder} from "../builder";
-import {sendActionAndRenderList} from "../render.list.action";
+import {Builder} from "../../builder";
+import {sendActionAndRenderList} from "../../render.list.action";
 
 export let vListAction = {
 	name: 'v-list-action',

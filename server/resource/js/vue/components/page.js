@@ -1,6 +1,6 @@
 import {vSelect} from "./v.select";
 import {vFilms} from "./v.films";
-import {vDynamicSelect} from "./github/v.dynamic.select";
+import {vDynamicSelect} from "./../github/v.dynamic.select";
 
 let template = `
 				<div>

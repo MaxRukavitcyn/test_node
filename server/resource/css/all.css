@@ -50,7 +50,7 @@
 .select input {
     width: 200px;
     color: black;
-    background-color: #e0e0df;
+    /*background-color: #e0e0df;*/
     position: relative;
     top: 4px;
     left: 3px;
@@ -72,24 +72,20 @@
     padding-left: 0px;
     cursor: pointer;
 }
-.target :hover {
-    background: aquamarine;
-}
-.links-bar>div {
-    background: bisque;
-    text-align: center;
-}
-.links-bar>div:hover {
-    background: aliceblue;
-}
+/*.target :hover {*/
+/*    background: aquamarine;*/
+/*}*/
+/*.links-bar>div {*/
+/*    background: bisque;*/
+/*    text-align: center;*/
+/*}*/
+/*.links-bar>div:hover {*/
+/*    background: aliceblue;*/
+/*}*/
 .film-container {
     position: absolute;
     top: 38px;
     z-index: -1;
-}
-
-body {
-    background: rgba(202, 238, 252, 0.55);
 }
 
 /*////////////////////////////////////////////////////////////////////////*/
@@ -140,7 +136,7 @@ body {
 }
 .vue-dynamic-select .search {
     border: none;
-    background: #e1f5fd;
+    /*background: #e1f5fd;*/
     width: 50%;
 }
 .vue-dynamic-select .search:focus {

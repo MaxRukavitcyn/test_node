@@ -1,9 +1,6 @@
-import {vTreeComp} from "./v.tree.comp";
 import VueRouter from 'vue-router';
 import {routes} from "./router";
-import {vListAction} from "./v.list.action";
-import {vListChange} from "./v.list.change";
-import {vTreeCustom} from "./v.tree.custom";
+import {vHeader} from "./v.header";
 
 let router = new VueRouter({
 	routes: routes
@@ -38,16 +35,25 @@ let treeData = {
 	]
 };
 
+let template = `
+	<v-app>
+        <v-content>
+            <v-container>
+                <v-header></v-header>
+                <router-view></router-view>
+            </v-container>
+        </v-content>
+    </v-app>
+`;
+
 export let vm = new Vue({
 	el: '#app',
+	template,
 	router: router,
 	vuetify: new Vuetify(),
-	// components: {
-	// 	'tree-item': vTreeComp,
-	// 	'v-list-change': vListChange,
-	// 	'v-list-action': vListAction,
-	// 	'v-tree-custom': vTreeCustom
-	// },
+	components: {
+		'v-header': vHeader,
+	},
 	data: {
 		treeData: treeData,
 		title: 'hui',

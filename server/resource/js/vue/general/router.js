@@ -1,12 +1,11 @@
-import {vTreeComp} from "./v.tree.comp";
-import {vListChange} from "./v.list.change";
-import {vTreeCustom} from "./v.tree.custom";
-import {vListAction} from "./v.list.action";
-import {data} from "./store.data";
-import {vSelect} from "./v.select";
-import {vPageTest} from "./page";
-import {vFilms} from "./v.films";
-import {vCarusel} from "./test.vutify";
+import {vTreeComp} from "../components/v.tree.comp";
+import {vListChange} from "../components/v.list.change";
+import {vTreeCustom} from "../components/v.tree.custom";
+import {vListAction} from "../components/v.list.action";
+import {data} from "../data/store.data";
+import {vPageTest} from "../components/page";
+import {vFilms} from "../components/v.films";
+import {vCarusel} from "../components/test.vutify";
 
 let treeData = {
 	name: 'My Tree',
