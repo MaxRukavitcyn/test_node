@@ -3,11 +3,13 @@ let template = `<div>
 						<li v-for="(l, i) in list" @click="printIndex(i)">
 							{{l.name}}
 							<div>
-								<input type="text" v-model:value="l.name">
+<!--								<input type="text" v-model:value="l.name">-->
+									<v-text-field v-model="l.name"></v-text-field>
 							</div>
 						</li>
 					</ul>
-					<input type="button" @click="addUser" value="добавить">
+<!--					<input type="button" @click="addUser" value="добавить">-->
+				
 				</div>`;
 
 export let vListChange = {

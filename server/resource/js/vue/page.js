@@ -6,7 +6,7 @@ let template = `
 				<div>
 					<h1>Фильмотека</h1>
 					<br>
-					<div style="width: 50%">
+					<div style="width: 50%; z-index: 9999">
 						<v-dynamic-select :options="model.list" v-model="selectedObject"></v-dynamic-select>
 					</div>
 					<div style="position: relative; display: inline-block" >

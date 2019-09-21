@@ -9,9 +9,16 @@ let template = ` <div>
 							</div>
         				</div>
         			<br>
-        			<input type="text" v-model="tit">
+<!--        			<v-input type="text" v-model="tit">-->
+        			<v-text-field
+		              v-model="tit"
+		              :rules="nameRules"
+		              :counter="100"
+		              label="название дела"
+		              required
+		            ></v-text-field>
         			<br>
-					<button @click="sendData" >send</button>
+					<v-btn @click="sendData" >send</v-btn>
 				</div>`;
 
 import {Builder} from "../builder";
@@ -23,7 +30,11 @@ export let vListAction = {
 	data() {
 		return {
 			tit: '',
-			list: []
+			list: [],
+			nameRules: [
+				v => !!v || 'Name is required',
+				v => v.length <= 100 || 'Name must be less than 10 characters',
+			],
 		}
 	},
 	created(){

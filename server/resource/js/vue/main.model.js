@@ -38,10 +38,10 @@ let treeData = {
 	]
 };
 
-
 export let vm = new Vue({
 	el: '#app',
 	router: router,
+	vuetify: new Vuetify(),
 	// components: {
 	// 	'tree-item': vTreeComp,
 	// 	'v-list-change': vListChange,

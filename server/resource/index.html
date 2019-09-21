@@ -4,21 +4,30 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/all.css">
     <link rel="icon" sizes="120x120" href="./icons/favicon.ico">
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     <title>TEST</title>
 </head>
 <body>
 <div id="app">
+    <v-app>
+        <v-content>
+            <v-container>
+                <div class="links-bar">
+                    <div><router-link to="/tree"><div>дерево</div></router-link></div>
+                    <div><router-link to="/list/name"><div>список</div></router-link></div>
+                    <div><router-link to="/tree/custom"><div>дерево свое хрень</div></router-link></div>
+                    <div><router-link to="/list/action"><div>список дел</div></router-link></div>
+                    <div><router-link to="/test/page"><div>Фильмотека</div></router-link></div>
+                    <div><router-link to="/carusel"><div>карусель</div></router-link></div>
+                </div>
 
-    <div class="links-bar">
-        <div><router-link to="/tree"><div>дерево</div></router-link></div>
-        <div><router-link to="/list/name"><div>список</div></router-link></div>
-        <div><router-link to="/tree/custom"><div>дерево свое хрень</div></router-link></div>
-        <div><router-link to="/list/action"><div>список дел</div></router-link></div>
-        <div><router-link to="/test/page"><div>Фильмотека</div></router-link></div>
-    </div>
-    <router-view></router-view>
-
+                <router-view></router-view>
+            </v-container>
+        </v-content>
+    </v-app>
 
 </div>
 
@@ -31,6 +40,7 @@
 
 <!--<script src="js/lib/vue.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
 <script src="dist/bundle.js"></script>
 <!--<script src="js/vue/main.model.js"></script>-->
 </body>
