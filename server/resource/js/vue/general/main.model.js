@@ -1,39 +1,12 @@
 import VueRouter from 'vue-router';
 import {routes} from "./router";
 import {vHeader} from "./v.header";
+import {treeData} from "../data/store.data";
+import {iHttp} from "../../http/interface";
 
 let router = new VueRouter({
 	routes: routes
 });
-
-let treeData = {
-	name: 'My Tree',
-	children: [
-		{ name: 'hello' },
-		{ name: 'wat' },
-		{
-			name: 'child folder',
-			children: [
-				{
-					name: 'child folder',
-					children: [
-						{ name: 'hello' },
-						{ name: 'wat' }
-					]
-				},
-				{ name: 'hello' },
-				{ name: 'wat' },
-				{
-					name: 'child folder',
-					children: [
-						{ name: 'hello' },
-						{ name: 'wat' }
-					]
-				}
-			]
-		}
-	]
-};
 
 let template = `
 	<v-app>
@@ -55,12 +28,19 @@ export let vm = new Vue({
 		'v-header': vHeader,
 	},
 	data: {
-		treeData: treeData,
+		treeData: {},
 		title: 'hui',
 		list: [],
 		elem: '',
 		number: 0,
 		showList: true,
+	},
+	beforeCreate(){
+		iHttp.get('/tree').then(d=>this.treeData = d);
+		iHttp.post('/test/post', {id: 1, message: 'Hello World!!!'}).then(d=>{
+			log('good');
+			iHttp.get('/users').then(d=>log(d));
+		})
 	},
 	methods: {
 		hideList() {

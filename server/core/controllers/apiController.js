@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const DB = require('./dataBaseTemp');
 const paths = express();
 
 let corsOptions = {
@@ -13,6 +14,9 @@ paths.get('/test/router', cors(corsOptions), function (req, res) {
 paths.get('/test', cors(corsOptions), (request, response) => {
 	response.send({'firstName':'Max', 'lastName': 'Hand'});
 });
+paths.get('/tree', cors(corsOptions), (request, response) => {
+	response.send(DB.db.treeData);
+});
 let actionList = [];
 let id = 0;
 paths.post('/add/action', cors(corsOptions), (request, response) => {
@@ -21,6 +25,15 @@ paths.post('/add/action', cors(corsOptions), (request, response) => {
 	actionList.push(body);
 	console.log(body);
 	response.send(actionList)
+});
+paths.post('/test/post', cors(corsOptions), (request, response) => {
+	let body = JSON.parse(request.body);
+	console.log(body);
+	DB.db.usersStorage = body;
+	response.send('data is received');
+});
+paths.get('/users', cors(corsOptions), (request, response) => {
+	response.send(DB.db.usersStorage);
 });
 paths.get('/action/list', cors(corsOptions), (req, res)=>{
 	res.send(actionList);

@@ -8,3 +8,33 @@ export let data = [
 	{id: 7, pId: 3, name: 'Child3.2'},
 	{id: 8, pId: 3, name: 'Child3.3'},
 ];
+
+export let treeData = {
+	name: 'My Tree',
+	children: [
+		{ name: 'hello' },
+		{ name: 'wat' },
+		{
+			name: 'child folder',
+			children: [
+				{
+					name: 'child folder',
+					children: [
+						{ name: 'hello' },
+						{ name: 'wat' }
+					]
+				},
+				{ name: 'hello' },
+				{ name: 'wat' },
+				{
+					name: 'child folder',
+					children: [
+						{ name: 'hello' },
+						{ name: 'wat' }
+					]
+				}
+			]
+		}
+	]
+};
+
