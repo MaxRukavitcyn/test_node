@@ -4,7 +4,7 @@ let template = `<div>
 							{{l.name}}
 							<div>
 <!--								<input type="text" v-model:value="l.name">-->
-									<v-text-field v-model="l.name"></v-text-field>
+									<v-text-field style="width: 20%" v-model="l.name"></v-text-field>
 							</div>
 						</li>
 					</ul>

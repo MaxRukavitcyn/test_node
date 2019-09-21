@@ -11,6 +11,7 @@ let template = ` <div>
         			<br>
 <!--        			<v-input type="text" v-model="tit">-->
         			<v-text-field
+        			  style="width: 20%"
 		              v-model="tit"
 		              :rules="nameRules"
 		              :counter="100"
