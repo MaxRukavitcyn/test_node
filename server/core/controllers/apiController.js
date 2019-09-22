@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const DB = require('./dataBaseTemp');
+const DB = require('../data/dataBaseTemp');
 const paths = express();
 
 let corsOptions = {
@@ -15,13 +15,7 @@ paths.get('/test', cors(corsOptions), (request, response) => {
 	response.send({'firstName':'Max', 'lastName': 'Hand'});
 });
 paths.get('/tree', cors(corsOptions), (request, response) => {
-	if(request.query.key === 'treeData'){
-		response.send(DB.db.treeData);
-	}
-	if(request.query.key === 'data') {
-		response.send(DB.db.data);
-	}
-	
+	response.send(DB.db[request.query.key]);
 });
 let actionList = [];
 let id = 0;
