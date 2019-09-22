@@ -1,1 +1,1 @@
-web: node ./server/resource/js/index.js
+web: node ./server/core/express.js
