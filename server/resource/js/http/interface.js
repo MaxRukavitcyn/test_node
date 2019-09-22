@@ -1,8 +1,14 @@
 let baseUrl = 'http://localhost:3000';
 export let iHttp = {
-	get(url){
+	get(url, params){
+		let query = '';
+		if(params)  {
+			query = baseUrl + url + '?' + params;
+		} else {
+			query = baseUrl + url;
+		}
 		return new Promise((resolve)=>{
-			fetch(baseUrl + url)
+			fetch(query)
 				.then((res) => {
 					res.json().then((data) => {
 						resolve(data);

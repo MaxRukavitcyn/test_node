@@ -1,3 +1,4 @@
+import {iHttp} from "../../http/interface";
 
 
 let treeNode = {
@@ -11,12 +12,6 @@ let treeNode = {
 					</li>
 				</div>`,
 	props: ['item', 'list'],
-	beforeCreate(){
-		console.log('before')
-	},
-	mounted(){
-		console.log(this.item);
-	},
 	data(){
 		return {
 			isOpen: false,
@@ -27,7 +22,9 @@ let treeNode = {
 			this.isOpen = !this.isOpen;
 		},
 		findChildren(parent){
-			return this.list.filter(a=>a.pId === parent.id).slice();
+			if(this.list instanceof Array)
+				return this.list.filter(a=>a.pId === parent.id).slice();
+			else return [];
 		}
 	}
 };
@@ -42,5 +39,13 @@ export let vTreeCustom = {
 	name: 'v-tree-custom',
 	template,
 	components: {'tree-node': treeNode},
-	props: ['model'],
+	props: ['query'],
+	data(){
+		return {
+			model: {}
+		}
+	},
+	created(){
+		iHttp.get(this.query.url,this.query.params).then(d=>this.model = d)
+	}
 };

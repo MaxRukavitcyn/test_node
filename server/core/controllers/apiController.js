@@ -15,7 +15,13 @@ paths.get('/test', cors(corsOptions), (request, response) => {
 	response.send({'firstName':'Max', 'lastName': 'Hand'});
 });
 paths.get('/tree', cors(corsOptions), (request, response) => {
-	response.send(DB.db.treeData);
+	if(request.query.key === 'treeData'){
+		response.send(DB.db.treeData);
+	}
+	if(request.query.key === 'data') {
+		response.send(DB.db.data);
+	}
+	
 });
 let actionList = [];
 let id = 0;

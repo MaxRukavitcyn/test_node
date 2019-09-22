@@ -1,7 +1,6 @@
 import VueRouter from 'vue-router';
 import {routes} from "./router";
 import {vHeader} from "./v.header";
-import {treeData} from "../data/store.data";
 import {iHttp} from "../../http/interface";
 
 let router = new VueRouter({
@@ -28,7 +27,6 @@ export let vm = new Vue({
 		'v-header': vHeader,
 	},
 	data: {
-		treeData: {},
 		title: 'hui',
 		list: [],
 		elem: '',
@@ -36,7 +34,6 @@ export let vm = new Vue({
 		showList: true,
 	},
 	beforeCreate(){
-		iHttp.get('/tree').then(d=>this.treeData = d);
 		iHttp.post('/test/post', {id: 1, message: 'Hello World!!!'}).then(d=>{
 			log('good');
 			iHttp.get('/users').then(d=>log(d));

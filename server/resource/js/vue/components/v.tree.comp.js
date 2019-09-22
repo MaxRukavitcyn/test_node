@@ -1,3 +1,5 @@
+import {iHttp} from "../../http/interface";
+
 let template = `<div>
 				  <li>
 				    <div
@@ -64,8 +66,16 @@ let treeTmpl = `
 export let vTreeComp = {
 	name:'tree-comp',
 	template: treeTmpl,
-	props: ['treeData'],
+	props: ['query'],
 	components: {'tree-item': treeItem},
+	data(){
+		return {
+			treeData: {}
+		}
+	},
+	created(){
+		iHttp.get(this.query.url,this.query.params).then(d=>this.treeData = d)
+	},
 	methods: {
 		makeFolder: function (item) {
 			Vue.set(item, 'children', []);
