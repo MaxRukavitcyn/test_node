@@ -4,7 +4,7 @@ const apiController = require('./controllers/apiController');
 const resourceController = require('./controllers/resourceController');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.text());
 app.use(apiController);
