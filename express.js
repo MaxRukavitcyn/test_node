@@ -1,13 +1,13 @@
 const express = require('express');
 const bodyParser = require("body-parser");
-const apiController = require('./controllers/apiController');
-const resourceController = require('./controllers/resourceController');
+const apiController = require('./server/core/controllers/apiController');
+const resourceController = require('./server/core/controllers/resourceController');
 
 const app = express();
 const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.text());
-app.use(express.static('../resource'));
+app.use(express.static('resource'));
 app.use(apiController);
 app.use(resourceController);
 const http = require('http');
