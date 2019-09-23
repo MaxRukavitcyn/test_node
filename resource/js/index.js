@@ -26,5 +26,7 @@ var treeData = {
 		},
 	]
 }
+
+alert('Здаров, Антоха!')
 // window.data = data;
 // console.log(new MapperData().mapper(data));
