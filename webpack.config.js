@@ -1,11 +1,11 @@
 let path = require('path'); //подгружаем модуль path для того что бы пути делать абсолютныыми
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 let conf = {
-	entry: './server/resource/js/index.js', //точка входа
+	entry: './resource/js/index.js', //точка входа
 	output: {
-		path: path.resolve(__dirname, './server/resource/dist'), //путь к папке в которую кладем файл main.js, путь делается абсолютным через модуль path
+		path: path.resolve(__dirname, './resource/dist'), //путь к папке в которую кладем файл main.js, путь делается абсолютным через модуль path
 		filename: "bundle.js",
-		publicPath: "server/resource/dist/" //подставляем папку dist и теперь можем не пересобирать, изменения будут отображаться в браузере на лету
+		publicPath: "resource/dist/" //подставляем папку dist и теперь можем не пересобирать, изменения будут отображаться в браузере на лету
 	},
 	devServer: {
 		overlay: true,  //вывод ошибок прямо в браузере, не нужно смотреть ошибку в консоли
