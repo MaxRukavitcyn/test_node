@@ -10,7 +10,8 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "run": "node express"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",
