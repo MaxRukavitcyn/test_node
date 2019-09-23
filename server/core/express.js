@@ -10,7 +10,10 @@ app.use(bodyParser.text());
 app.use(express.static('../resource'));
 app.use(apiController);
 app.use(resourceController);
-app.listen(port, (err) => {
+const http = require('http');
+const server = http.Server(app);
+
+server.listen(port, (err) => {
     if (err) {
         return console.log('something bad happened', err)
     }
