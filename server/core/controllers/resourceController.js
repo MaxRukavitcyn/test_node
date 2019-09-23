@@ -2,12 +2,12 @@ const express = require('express');
 const path = require('path');
 const paths = express();
 
-paths.get('/', (request, response) => {
-	response.sendfile(path.resolve('../resource/index.html')); //path.resolver разрешает относительные пути
-});
-paths.get('/icons/favicon.ico', (request, response) => {
-	response.sendfile(path.resolve('../resource/icons/favicon.ico'));
-})
+// paths.get('/', (request, response) => {
+// 	response.sendfile(path.resolve('../resource/index.html')); //path.resolver разрешает относительные пути
+// });
+// paths.get('/icons/favicon.ico', (request, response) => {
+// 	response.sendfile(path.resolve('../resource/icons/favicon.ico'));
+// })
 paths.get('/dist/bundle.js', (request, response) => {
 	response.sendfile(path.resolve('../resource/dist/bundle.js'));
 });
