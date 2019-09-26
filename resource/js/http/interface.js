@@ -1,4 +1,7 @@
 let baseUrl = location.origin;
+if(baseUrl.includes(":8080")) {
+	baseUrl = baseUrl.replace(":8080", ":3000")
+}
 export let iHttp = {
 	get(url, params){
 		let query = '';

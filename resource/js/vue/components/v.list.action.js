@@ -1,4 +1,7 @@
 let baseUrl = location.origin;
+if(baseUrl.includes(":8080")) {
+	baseUrl = baseUrl.replace(":8080", ":3000")
+}
 let template = ` <div>
         				<div class="buisness-list">
             				<h1>Список дел:</h1>

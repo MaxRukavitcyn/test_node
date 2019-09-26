@@ -43,6 +43,9 @@ paths.post('/delete/act', cors(corsOptions), (req, res)=>{
 	console.log(req.body);
 	res.send('delete');
 });
+paths.get('/links', cors(corsOptions), (req, res)=>{
+	res.send(DB.db.links[req.query.name]);
+});
 
 
 module.exports = paths;
