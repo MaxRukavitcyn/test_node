@@ -1,6 +1,0 @@
-{
-  "scripts": {
-    "run": "node express",
-    "debug": "node inspect express.js"
-  }
-}
