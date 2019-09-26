@@ -1,5 +1,5 @@
 'use strict';
-let baseUrl = 'http://localhost:3000';
+let baseUrl = location.origin;
 import {Builder} from "./builder";
 export function renderList(tag){
 	let builder = new Builder();

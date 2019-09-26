@@ -1,4 +1,4 @@
-let baseUrl = 'http://localhost:3000';
+let baseUrl = location.origin;
 export let iHttp = {
 	get(url, params){
 		let query = '';

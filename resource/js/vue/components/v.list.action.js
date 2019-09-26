@@ -1,4 +1,4 @@
-let baseUrl = 'http://localhost:3000';
+let baseUrl = location.origin;
 let template = ` <div>
         				<div class="buisness-list">
             				<h1>Список дел:</h1>
