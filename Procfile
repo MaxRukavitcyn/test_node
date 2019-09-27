@@ -1,1 +1,1 @@
-web: node --inspect express
+web: node express.js
