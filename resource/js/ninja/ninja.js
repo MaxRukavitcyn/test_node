@@ -1,8 +1,11 @@
+import {iHttp} from "../http/interface";
+
 window.log = console.log;
 
 export let globalNinja = (function () {
 	function solutionLineEquations(equation) {
 		if (equation !== "") {
+			equation = equation.trim();
 			let cofs = equation.split(' ');
 			let cofWithX;
 			let cof;
@@ -28,7 +31,7 @@ export let globalNinja = (function () {
 				solution = res / cofWithX;
 			}
 			
-			return equation + '\nsolution: ' + solution;
+			return {equation: equation, solution: solution};
 		}
 		return;
 	}

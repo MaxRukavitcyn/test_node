@@ -5,6 +5,7 @@ import {vListAction} from "../components/v.list.action";
 import {vPageTest} from "../components/page";
 import {vFilms} from "../components/v.films";
 import {vCarusel} from "../components/test.vutify";
+import {vQuations} from "../components/v.equations";
 
 export let routes = [
 	{path: '/tree', component: vTreeComp, props:{query: {url:'/tree',params: 'key=treeData'}}},
@@ -13,5 +14,6 @@ export let routes = [
 	{path: '/list/action', component: vListAction},
 	{path: '/test/page', component: vPageTest},
 	{path: '/films', component: vFilms},
-	{path: '/carusel', component: vCarusel}
+	{path: '/carusel', component: vCarusel},
+	{path: '/liner/equations', component: vQuations}
 ];

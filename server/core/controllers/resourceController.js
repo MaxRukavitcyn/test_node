@@ -1,6 +1,13 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
+
 const paths = express();
+let corsOptions = {
+	origins: ['http://localhost:8080', 'http://localhost'],
+	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
 
 // paths.get('/', (request, response) => {
 // 	response.sendfile(path.resolve('../resource/index.html')); //path.resolver разрешает относительные пути
@@ -8,6 +15,9 @@ const paths = express();
 // paths.get('/icons/favicon.ico', (request, response) => {
 // 	response.sendfile(path.resolve('../resource/icons/favicon.ico'));
 // })
+paths.get('/equations', cors(corsOptions), (request, response) => {
+	response.sendfile(path.resolve('server/core/data/equations.txt'))
+});
 paths.get('/dist/bundle.js', (request, response) => {
 	response.sendfile(path.resolve('../resource/dist/bundle.js'));
 });
