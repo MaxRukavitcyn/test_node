@@ -1,6 +1,6 @@
 let template = `
 <div>
-	<v-carousel>
+	<v-carousel cycle>
       <v-carousel-item
         v-for="(url, i) in urls"
         :key="url"
