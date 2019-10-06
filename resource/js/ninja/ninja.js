@@ -1,69 +1,38 @@
 window.log = console.log;
 
-export let globalNinja =  (function () {
-
-	function assert(isTrue, message, failMess){
-		let li = document.createElement('li');
-		document.getElementById('answer').appendChild(li);
-		if(isTrue) {
-			li.style.color = 'green';
-			li.innerText = message;
-		} else {
-			li.style.color = 'red';
-			li.innerText = failMess || 'fail';
-		}
-	}
-	function getRepeats(words){
-		let res={};
-		words.forEach((a,i, arr)=>{
-			let count=1;
-			arr.forEach((b,j)=>{
-				if(a===b && i!==j){
-					count++;
+export let globalNinja = (function () {
+	function solutionLineEquations(equation) {
+		if (equation !== "") {
+			let cofs = equation.split(' ');
+			let cofWithX;
+			let cof;
+			for (let i = 0; i < cofs.length; i++) {
+				if (cofs[i].includes("x")) {
+					let num = cofs[i].substring(0, cofs[i].indexOf("x"));
+					cofWithX = Number.parseInt(num !== "" ? num : 1);
 				}
-			});
-			res[a]=count;
-		});
-		return res;
+				if (!isNaN(cofs[i]) && i !== cofs.length - 1) {
+					cof = Number.parseInt(cofs[i]);
+				}
+			}
+			if(!cof) cof = 0;
+			let res = Number.parseInt(cofs[cofs.length - 1]);
+			let solution;
+			if (equation.indexOf('+') !== -1){
+				solution = (res - cof) / cofWithX;
+			} else if (equation.indexOf('-') !== -1 && equation.indexOf('x') < 2) {
+				solution = (res + cof) / cofWithX;
+			} else if (equation.indexOf('-') !== -1 && equation.indexOf('x') > 2) {
+				solution = (res - cof) / (-1 * cofWithX);
+			} else {
+				solution = res / cofWithX;
+			}
+			
+			return equation + '\nsolution: ' + solution;
+		}
+		return;
 	}
+	window.solutionLineEquations = solutionLineEquations;
+	log(solutionLineEquations('2x + 1 = 5'));
 	
-	function getZippedArrays(keys, values) {
-		let res = {};
-		keys.forEach((k,i)=>{
-			if(values[i])
-				res[k] = values[i];
-		});
-		return res;
-	}
-	
-	function getSortedArray(array, key) {
-		return array.sort((a,b)=>a[key]>=b[key]? 1 : -1);
-	}
-	
-	function getData(keys, values) {
-		let res = [];
-		values.forEach(val=>{
-			res.push(getZippedArrays(keys, val))
-		});
-		return res;
-	}
-	let keys = ['имя', 'любимый цвет', 'любимое блюдо'];
-	let values = [
-		['Василий', 'красный', 'борщ'],
-		['Мария'],
-		['Иннокентий', 'жёлтый', 'пельмени', '18', 'Азовское']
-	];
-	log(getData(keys, values));
-	let words = ['hui', 'her', 'hui', 'max', 'max'];
-	log(words, getRepeats(words));
-//=======================================================================================================================
-	let g;
-	function globalFn() {
-		let res = 'source';
-		this.getRes = (name) => {
-			return res + ' '+ name;
-		};
-	}
-	g = new globalFn();
-	log(g.getRes('max'));
 })();
