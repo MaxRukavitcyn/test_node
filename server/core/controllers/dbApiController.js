@@ -16,7 +16,6 @@ paths.get('/db/test', cors(corsOptions), (request, response) => {
 });
 paths.post('/db/test/post', cors(corsOptions), (request, response) =>{
 	let body = request.body;
-	let returnData = ['id', 'first_name', 'last_name'];
 	pdb.pdb.any('insert into node_test.public.test_table(first_name, last_name) values ($1, $2) returning id, first_name, last_name', [body.firstName, body.lastName]).then(data=>{
 		response.send(data);
 	});
