@@ -23,11 +23,10 @@ export let vQuations = {
         }
     },
     created() {
-        iHttp.get('/equations', null, 'text').then(list=>{
-            let equations = list.split(';');
+        iHttp.get('/db/equations').then(list=>{
             let res = [];
-            equations.forEach(e=>{
-                res.push(solutionLineEquations(e));
+            list.forEach(e=>{
+                res.push(solutionLineEquations(e.equation));
             });
             this.equations = res;
         })
