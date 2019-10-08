@@ -12,5 +12,4 @@ let cn = {
 	password: 4061990
 };
 // let cn = 'postgres://postgres:4061990@localhost:5432/node_test';
-let pdb = pgp(cn);
-module.exports.pdb = pdb;
+module.exports.client = pgp(cn);
