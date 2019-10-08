@@ -25,5 +25,11 @@ paths.get('/db/equations', cors(corsOptions), (request, response) =>{
 		response.send(data);
 	})
 });
+paths.post('/db/add/equation', cors(corsOptions), (request, response) => {
+	let body = JSON.parse(request.body);
+	client.any('insert into equations (equation) values ($1) returning id', [body.equation]).then(d=>{
+		response.send(d);
+	});
+});
 
 module.exports = paths;
