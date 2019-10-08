@@ -21,13 +21,13 @@ paths.post('/db/test/post', cors(corsOptions), (request, response) =>{
 	});
 });
 paths.get('/db/equations', cors(corsOptions), (request, response) =>{
-	client.any('select * from equations').then(data => {
+	client.query('select * from equations').then(data => {
 		response.send(data);
 	})
 });
 paths.post('/db/add/equation', cors(corsOptions), (request, response) => {
 	let body = JSON.parse(request.body);
-	client.any('insert into equations (equation) values ($1) returning id', [body.equation]).then(d=>{
+	client.query('insert into equations (equation) values ($1) returning id', [body.equation]).then(d=>{
 		response.send(d);
 	});
 });
