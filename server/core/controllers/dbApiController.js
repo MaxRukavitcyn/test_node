@@ -22,7 +22,9 @@ paths.post('/db/test/post', cors(corsOptions), (request, response) =>{
 });
 paths.get('/db/equations', cors(corsOptions), (request, response) =>{
 	client.query('select * from equations').then(data => {
-		response.send(data);
+		let res = data;
+		if(!Array.isArray(res)) res = data.rows;
+		response.send(res);
 	})
 });
 paths.post('/db/add/equation', cors(corsOptions), (request, response) => {
