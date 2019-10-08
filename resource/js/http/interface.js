@@ -30,3 +30,5 @@ export let iHttp = {
 		})
 	}
 };
+
+window.iHttp = iHttp;

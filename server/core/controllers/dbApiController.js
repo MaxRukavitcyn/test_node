@@ -20,5 +20,10 @@ paths.post('/db/test/post', cors(corsOptions), (request, response) =>{
 		response.send(data);
 	});
 });
+paths.get('/db/equations', cors(corsOptions), (request, response) =>{
+	client.any('select * from equations').then(data => {
+		response.send(data);
+	})
+});
 
 module.exports = paths;
