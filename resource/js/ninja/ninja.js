@@ -7,17 +7,16 @@ export let globalNinja = (function () {
 		if (equation !== "") {
 			equation = equation.trim();
 			let elements = equation.split(' ');
-			let rateAtX = 0;
-			let freeRate = 0;
+			let rateAtUnknown = 0, freeRate = 0, lastIndex = elements.length - 1;
 			for (let i = 0; i < elements.length; i++) {
-				if (elements[i].includes("x")) {
-					let num = elements[i].substring(0, elements[i].indexOf("x"));
+				if (elements[i].match(/[a-zA-Z]/) && elements[i].match(/[a-zA-Z]/).index !== -1) {
+					let num = elements[i].substring(0, elements[i].match(/[a-zA-Z]/).index);
 					if(i !== 0 && elements[i-1] === "-") {
 						num = num? num * (-1) : (-1);
 					}
-					rateAtX += Number.parseFloat(num !== "" ? num : 1);
+					rateAtUnknown += Number.parseFloat(num !== "" ? num : 1);
 				}
-				else if (!isNaN(elements[i]) && i !== elements.length - 1) {
+				else if (!isNaN(elements[i]) && i !== lastIndex) {
 					if(i !== 0 && elements[i-1] === '-') {
 						elements[i] *= (-1);
 					}
@@ -25,7 +24,7 @@ export let globalNinja = (function () {
 				}
 			}
 			if(!freeRate) freeRate = 0;
-			return {equation: equation, solution: (Number.parseFloat(elements[elements.length - 1]) - freeRate) / rateAtX};
+			return {equation: equation, solution: (Number.parseFloat(elements[lastIndex]) - freeRate) / rateAtUnknown};
 		}
 		return;
 	}
