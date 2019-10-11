@@ -3,39 +3,32 @@ import {iHttp} from "../http/interface";
 window.log = console.log;
 
 export let globalNinja = (function () {
-	function solutionLineEquations(equation) {
+	function getSolutionLineEquation(equation) {
 		if (equation !== "") {
 			equation = equation.trim();
-			let cofs = equation.split(' ');
-			let cofWithX;
-			let cof;
-			for (let i = 0; i < cofs.length; i++) {
-				if (cofs[i].includes("x")) {
-					let num = cofs[i].substring(0, cofs[i].indexOf("x"));
-					cofWithX = Number.parseInt(num !== "" ? num : 1);
+			let elements = equation.split(' ');
+			let rateAtUnknown = 0, freeRate = 0, lastIndex = elements.length - 1;
+			for (let i = 0; i < elements.length; i++) {
+				if (elements[i].match(/[a-zA-Z]/) && elements[i].match(/[a-zA-Z]/).index !== -1) {
+					let num = elements[i].substring(0, elements[i].match(/[a-zA-Z]/).index);
+					if(i !== 0 && elements[i-1] === "-") {
+						num = num? num * (-1) : (-1);
+					}
+					rateAtUnknown += Number.parseFloat(num !== "" ? num : 1);
 				}
-				if (!isNaN(cofs[i]) && i !== cofs.length - 1) {
-					cof = Number.parseInt(cofs[i]);
+				else if (!isNaN(elements[i]) && i !== lastIndex) {
+					if(i !== 0 && elements[i-1] === '-') {
+						elements[i] *= (-1);
+					}
+					freeRate += Number.parseFloat(elements[i]);
 				}
 			}
-			if(!cof) cof = 0;
-			let res = Number.parseInt(cofs[cofs.length - 1]);
-			let solution;
-			if (equation.indexOf('+') !== -1){
-				solution = (res - cof) / cofWithX;
-			} else if (equation.indexOf('-') !== -1 && equation.indexOf('x') < 2) {
-				solution = (res + cof) / cofWithX;
-			} else if (equation.indexOf('-') !== -1 && equation.indexOf('x') > 2) {
-				solution = (res - cof) / (-1 * cofWithX);
-			} else {
-				solution = res / cofWithX;
-			}
-			
-			return {equation: equation, solution: solution};
+			if(!freeRate) freeRate = 0;
+			return {equation: equation, solution: (Number.parseFloat(elements[lastIndex]) - freeRate) / rateAtUnknown};
 		}
 		return;
 	}
-	window.solutionLineEquations = solutionLineEquations;
-	log(solutionLineEquations('2x + 1 = 5'));
+	window.getSolutionLineEquation = getSolutionLineEquation;
+	log(getSolutionLineEquation('2x + 1 = 5'));
 	
 })();
