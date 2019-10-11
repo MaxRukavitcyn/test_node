@@ -33,5 +33,10 @@ paths.post('/db/add/equation', cors(corsOptions), (request, response) => {
 		response.send(d);
 	});
 });
+paths.post('/db/delete/equations', cors(corsOptions), (request, response) => {
+	let ids = JSON.parse(request.body);
+	client.query(`delete from equations where id in(${ids})`);
+	response.send('deleted');
+});
 
 module.exports = paths;
