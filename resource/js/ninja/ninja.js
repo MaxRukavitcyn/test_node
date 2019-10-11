@@ -3,7 +3,7 @@ import {iHttp} from "../http/interface";
 window.log = console.log;
 
 export let globalNinja = (function () {
-	function solutionLineEquations(equation) {
+	function getSolutionLineEquation(equation) {
 		if (equation !== "") {
 			equation = equation.trim();
 			let elements = equation.split(' ');
@@ -28,7 +28,7 @@ export let globalNinja = (function () {
 		}
 		return;
 	}
-	window.solutionLineEquations = solutionLineEquations;
-	log(solutionLineEquations('2x + 1 = 5'));
+	window.getSolutionLineEquation = getSolutionLineEquation;
+	log(getSolutionLineEquation('2x + 1 = 5'));
 	
 })();
