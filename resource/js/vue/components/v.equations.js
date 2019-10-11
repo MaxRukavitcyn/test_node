@@ -35,8 +35,8 @@ export let vEquations = {
         return {
 	        equationRules: [
 	        	eq => {
-	        	let test = /^[0-9A-Za-z]{0,4}\s[-+]\s[0-9A-Za-z]{0,4}\s\=\s[0-9]{0,9}$/.test(eq) ||
-			        /^[0-9A-Za-z]{0,4}\s\=\s[0-9]{0,9}$/.test(eq) ||
+	        	let test = /^[0-9A-Za-z]{0,4}\s[-+]\s[0-9A-Za-z]{0,4}\s\=\s\-?[0-9]{0,9}$/.test(eq) ||
+			        /^[0-9A-Za-z]{0,4}\s\=\s\-?[0-9]{0,9}$/.test(eq) ||
 			        'неверный формат';
 	        	this.equationValid = test !== 'неверный формат';
 	        	return test;
