@@ -4,7 +4,7 @@ window.log = console.log;
 
 export let globalNinja = (function () {
 	function getSolutionLineEquation(equation) {
-		if (equation !== "") {
+		if (equation) {
 			equation = equation.trim();
 			let elements = equation.split(' ');
 			let rateAtUnknown = 0, freeRate = 0, lastIndex = elements.length - 1;
