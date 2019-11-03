@@ -21,7 +21,7 @@ paths.post('/db/test/post', cors(corsOptions), (request, response) =>{
 	});
 });
 paths.get('/db/equations', cors(corsOptions), (request, response) =>{
-	client.query('select * from equations').then(data => {
+	client.query('select * from equations order by id desc').then(data => {
 		let res = data;
 		if(!Array.isArray(res)) res = data.rows;
 		response.send(res);
