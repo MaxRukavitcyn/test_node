@@ -48,7 +48,7 @@ export let vListAction = {
 	},
 	methods: {
 		sendData() {
-			alert(this.tit + ' - 'это то что мы отправили! Привет всем!!!')
+			alert(this.tit + " - это то что мы отправили! Привет всем!!!");
 			let builder = new Builder();
 			let ul = builder.get('ul', 0);
 			sendActionAndRenderList(this.tit, ul, builder);
