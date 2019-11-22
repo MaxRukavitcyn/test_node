@@ -1,6 +1,6 @@
 window.log = console.log;
 
-export let globalNinja =  (function () {
+export let globalNinja =  function () {
 
 	function assert(isTrue, message, failMess){
 		let li = document.createElement('li');
@@ -13,57 +13,26 @@ export let globalNinja =  (function () {
 			li.innerText = failMess || 'fail';
 		}
 	}
-	function getRepeats(words){
-		let res={};
-		words.forEach((a,i, arr)=>{
-			let count=1;
-			arr.forEach((b,j)=>{
-				if(a===b && i!==j){
-					count++;
-				}
-			});
-			res[a]=count;
-		});
-		return res;
+	function fail (mess) {
+		assert(false, '', mess);
 	}
+	//Promises
+	let myName = 'Max';
+	assert(myName === 'Max', 'Start');
+	let testImmediatePromise = new Promise((resolve, reject) => {
+		assert(true, 'into executor');
+		resolve('into immediate resolver');
+	});
+	assert(true, 'out promise');
+	testImmediatePromise.then(mess => assert(true, mess));
+	fail('end first part of code');
 	
-	function getZippedArrays(keys, values) {
-		let res = {};
-		keys.forEach((k,i)=>{
-			if(values[i])
-				res[k] = values[i];
-		});
-		return res;
-	}
-	
-	function getSortedArray(array, key) {
-		return array.sort((a,b)=>a[key]>=b[key]? 1 : -1);
-	}
-	
-	function getData(keys, values) {
-		let res = [];
-		values.forEach(val=>{
-			res.push(getZippedArrays(keys, val))
-		});
-		return res;
-	}
-	let keys = ['имя', 'любимый цвет', 'любимое блюдо'];
-	let values = [
-		['Василий', 'красный', 'борщ'],
-		['Мария'],
-		['Иннокентий', 'жёлтый', 'пельмени', '18', 'Азовское']
-	];
-	log(getData(keys, values));
-	let words = ['hui', 'her', 'hui', 'max', 'max'];
-	log(words, getRepeats(words));
-//=======================================================================================================================
-	let g;
-	function globalFn() {
-		let res = 'source';
-		this.getRes = (name) => {
-			return res + ' '+ name;
-		};
-	}
-	g = new globalFn();
-	log(g.getRes('max'));
-})();
+	assert(myName === 'Max', 'start second part');
+	let testDelayPromise = new Promise((resolve, reject) => {
+		assert(myName === 'Max', 'into delay promise');
+		setTimeout(() => resolve('resolve delay promise'), 5000);
+	});
+	assert(true, 'out delay promise');
+	testDelayPromise.then(mess => assert(myName === 'Max', mess));
+	fail('end all parts');
+};

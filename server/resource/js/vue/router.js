@@ -7,6 +7,7 @@ import {vSelect} from "./v.select";
 import {vPageTest} from "./page";
 import {vFilms} from "./v.films";
 import {vCarusel} from "./test.vutify";
+import {vNinjaTest} from "./v.ninja.test";
 
 let treeData = {
 	name: 'My Tree',
@@ -37,5 +38,6 @@ export let routes = [
 	{path: '/list/action', component: vListAction},
 	{path: '/test/page', component: vPageTest},
 	{path: '/films', component: vFilms},
-	{path: '/carusel', component: vCarusel}
+	{path: '/carusel', component: vCarusel},
+	{path: '/ninja', component: vNinjaTest}
 ];

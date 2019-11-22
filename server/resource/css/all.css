@@ -5,6 +5,19 @@
 .hidden {
     visibility: hidden;
 }
+.answers-container {
+    position: absolute;
+    top: 150px;
+    left: 70px;
+    border: 1px black solid;
+    width: 250px;
+    min-height: 100px;
+}
+
+.answers-list {
+    position: relative;
+    left: 20px;
+}
 .ul {
     padding: 0;
     margin: 0;
