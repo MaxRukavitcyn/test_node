@@ -30,3 +30,14 @@ export class MapperData {
 		return res;
 	}
 }
+
+class TestGovno {
+	constructor(index) {
+		this.index = index;
+	}
+	getGovno(){
+		return this.index + " GOVNO";
+	}
+}
+
+export let testGavnoInst = new TestGovno('single');
