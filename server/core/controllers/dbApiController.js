@@ -1,5 +1,5 @@
 // const pdb = require("../db/connect");
-const {client} = require("../db/db.deploy.connect");
+const {client} = require("../db/connect");
 const express = require('express');
 const cors = require('cors');
 
