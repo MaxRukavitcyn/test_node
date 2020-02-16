@@ -69,6 +69,10 @@ export class Game {
 		Game.ctx.fillStyle = "white";
 		Game.ctx.font = "45px Changa one";
 		Game.ctx.fillText(this.score,2 * Game.box,1.6 * Game.box);
+		
+		if (snake.body.length === 0) {
+			clearInterval(Game.start);
+		}
 	}
 }
 
