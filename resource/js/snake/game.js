@@ -26,28 +26,28 @@ export class Game {
 		Game.ctx.drawImage(ground, 0, 0);
 		items.forEach(item => item.drawSelf(Game.ctx));
 		snake.drawSelf(Game.ctx, Game.box);
-		let snakeHeadX = snake.body[0].x;
-		let snakeHeadY = snake.body[0].y;
+		let snakeHeadX = snake.getHeadX();
+		let snakeHeadY = snake.getHeadY();
 		if (snake.move === "LEFT") snakeHeadX -= Game.box;
 		if (snake.move === "UP") snakeHeadY -= Game.box;
 		if (snake.move === "RIGHT") snakeHeadX += Game.box;
 		if (snake.move === "DOWN") snakeHeadY += Game.box;
 		
-		if (snake.body[0].x === items[0].x && snake.body[0].y === items[0].y) { // if snake eat the food
+		if (snake.getHeadX() === items[0].x && snake.getHeadY() === items[0].y) { // if snake eat the food
 			this.score++;
 			snake.eat();
 			items[0].x = randomX(Game.box);
 			items[0].y = randomY(Game.box)
 			
-		} else if (snake.body[0].x === items[1].x && snake.body[0].y === items[1].y) { // if the snake eats the fire
+		} else if (snake.getHeadX() === items[1].x && snake.getHeadY() === items[1].y) { // if the snake eats the fire
 			this.score--;
 			snake.damage();
+			snake.removeTail();
 			items[1].x = randomX(Game.box);
 			items[1].y = randomY(Game.box);
-			snake.body.pop();
 		} else {
 			// remove the tail
-			snake.body.pop();
+			snake.removeTail();
 			snake.hitten = false;
 		}
 		
@@ -63,7 +63,7 @@ export class Game {
 			Game.dead.play();
 		}
 		if (!snake.hitten) {
-			snake.body.unshift(newHead);
+			snake.addNewHead(newHead);
 		}
 		// render score
 		Game.ctx.fillStyle = "white";
@@ -83,6 +83,18 @@ class Snake {
 		this.move = 'stop';
 		this._resolveControl();
 		this.hitten = false;
+	}
+	getHeadX() {
+		return this.body[0].x;
+	}
+	getHeadY() {
+		return this.body[0].y;
+	}
+	removeTail() {
+		this.body.pop();
+	}
+	addNewHead(newHead) {
+		this.body.unshift(newHead);
 	}
 	_resolveControl() {
 		let up = new Audio();
@@ -128,7 +140,7 @@ class Snake {
 	}
 	collision() {
 		for (let i = 1; i < this.body.length; i++) {
-			if (this.body[0].x === this.body[i].x && this.body[0].y === this.body[i].y) {
+			if (this.getHeadX() === this.body[i].x && this.getHeadY() === this.body[i].y) {
 				return true;
 			}
 		}
