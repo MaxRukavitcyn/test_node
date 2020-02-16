@@ -12,27 +12,26 @@ export class Game {
 		Game.box = 32;
 		const ground = new Image();
 		ground.src = "./js/snake/img/ground.png";
+		Game.dead = new Audio();
+		Game.dead.src = "./js/snake/audio/dead.mp3";
 		this.score = 0;
 		let snake = new Snake(9 * Game.box, 10 * Game.box);
 		let items = [];
 		items.push(new Apple(Game.box));
 		items.push(new Fire(Game.box));
 		this.render(ground, snake, items);
-		Game.start = setInterval(()=>this.render(ground, snake, items), 200);
-		
+		Game.start = setInterval(() => this.render(ground, snake, items), 200);
 	}
 	render(ground, snake, items) {
-		const dead = new Audio();
-		dead.src = "./js/snake/audio/dead.mp3";
 		Game.ctx.drawImage(ground, 0, 0);
 		items.forEach(item => item.drawSelf(Game.ctx));
 		snake.drawSelf(Game.ctx, Game.box);
 		let snakeHeadX = snake.body[0].x;
 		let snakeHeadY = snake.body[0].y;
-		if( snake.move === "LEFT") snakeHeadX -= Game.box;
-		if( snake.move === "UP") snakeHeadY -= Game.box;
-		if( snake.move === "RIGHT") snakeHeadX += Game.box;
-		if( snake.move === "DOWN") snakeHeadY += Game.box;
+		if (snake.move === "LEFT") snakeHeadX -= Game.box;
+		if (snake.move === "UP") snakeHeadY -= Game.box;
+		if (snake.move === "RIGHT") snakeHeadX += Game.box;
+		if (snake.move === "DOWN") snakeHeadY += Game.box;
 		
 		if (snake.body[0].x === items[0].x && snake.body[0].y === items[0].y) { // if snake eat the food
 			this.score++;
@@ -59,9 +58,9 @@ export class Game {
 		};
 		
 		let isCollision = snakeHeadX < Game.box || snakeHeadX > 17 * Game.box || snakeHeadY < 3 * Game.box || snakeHeadY > 17 * Game.box || snake.collision();
-		if(isCollision) {
+		if (isCollision) {
 			clearInterval(Game.start);
-			dead.play();
+			Game.dead.play();
 		}
 		if (!snake.hitten) {
 			snake.body.unshift(newHead);
@@ -96,16 +95,16 @@ class Snake {
 		let KEY_S = 83;
 		document.addEventListener("keydown", (event)=>{
 			let key = event.keyCode;
-			if( key === KEY_A && this.move !== "RIGHT"){
+			if (key === KEY_A && this.move !== "RIGHT") {
 				left.play();
 				this.move = "LEFT";
-			}else if(key === KEY_W && this.move !== "DOWN"){
+			} else if (key === KEY_W && this.move !== "DOWN") {
 				this.move = "UP";
 				up.play();
-			}else if(key === KEY_D && this.move !== "LEFT"){
+			} else if (key === KEY_D && this.move !== "LEFT") {
 				this.move = "RIGHT";
 				right.play();
-			}else if(key === KEY_S && this.move !== "UP"){
+			} else if (key === KEY_S && this.move !== "UP") {
 				this.move = "DOWN";
 				down.play();
 			}
@@ -124,8 +123,8 @@ class Snake {
 		this.hitten = true;
 	}
 	collision() {
-		for(let i = 1; i < this.body.length; i++){
-			if(this.body[0].x === this.body[i].x && this.body[0].y === this.body[i].y){
+		for (let i = 1; i < this.body.length; i++) {
+			if (this.body[0].x === this.body[i].x && this.body[0].y === this.body[i].y) {
 				return true;
 			}
 		}
