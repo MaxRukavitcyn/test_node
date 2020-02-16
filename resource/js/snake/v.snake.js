@@ -3,7 +3,7 @@ import {Game} from "./game";
 
 let template = `
     <div>
-        <canvas ref="snake" id="snake" width="608" height="608"></canvas>
+        <canvas ref="snake" width="608" height="608"></canvas>
     </div>
 `;
 
