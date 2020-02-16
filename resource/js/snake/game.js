@@ -34,13 +34,13 @@ export class Game {
 		if( snake.move === "RIGHT") snakeHeadX += Game.box;
 		if( snake.move === "DOWN") snakeHeadY += Game.box;
 		
-		if (snake.body[0].x == items[0].x && snake.body[0].y == items[0].y) { // if snake eat the food
+		if (snake.body[0].x === items[0].x && snake.body[0].y === items[0].y) { // if snake eat the food
 			this.score++;
 			snake.eat();
 			items[0].x = randomX(Game.box);
 			items[0].y = randomY(Game.box)
 			
-		} else if (snake.body[0].x == items[1].x && snake.body[0].y == items[1].y) { // if the snake eats the fire
+		} else if (snake.body[0].x === items[1].x && snake.body[0].y === items[1].y) { // if the snake eats the fire
 			this.score--;
 			snake.damage();
 			items[1].x = randomX(Game.box);
@@ -90,25 +90,27 @@ class Snake {
 		right.src = "./js/snake/audio/right.mp3";
 		left.src = "./js/snake/audio/left.mp3";
 		down.src = "./js/snake/audio/down.mp3";
-		
-		document.addEventListener("keydown", (e)=>direction.call(this, e));
-		
-		function direction(event) {
+		let KEY_A = 65;
+		let KEY_W = 87;
+		let KEY_D = 68;
+		let KEY_S = 83;
+		document.addEventListener("keydown", (event)=>{
 			let key = event.keyCode;
-			if( key == 65 && this.move != "RIGHT"){
+			if( key === KEY_A && this.move !== "RIGHT"){
 				left.play();
 				this.move = "LEFT";
-			}else if(key == 87 && this.move != "DOWN"){
+			}else if(key === KEY_W && this.move !== "DOWN"){
 				this.move = "UP";
 				up.play();
-			}else if(key == 68 && this.move != "LEFT"){
+			}else if(key === KEY_D && this.move !== "LEFT"){
 				this.move = "RIGHT";
 				right.play();
-			}else if(key == 83 && this.move != "UP"){
+			}else if(key === KEY_S && this.move !== "UP"){
 				this.move = "DOWN";
 				down.play();
 			}
-		}
+		});
+		
 	}
 	eat() {
 		let eat = new Audio();
@@ -123,7 +125,7 @@ class Snake {
 	}
 	collision() {
 		for(let i = 1; i < this.body.length; i++){
-			if(this.body[0].x == this.body[i].x && this.body[0].y == this.body[i].y){
+			if(this.body[0].x === this.body[i].x && this.body[0].y === this.body[i].y){
 				return true;
 			}
 		}
@@ -131,7 +133,7 @@ class Snake {
 	}
 	drawSelf(ctx, box) {
 		for (let i = 0; i < this.body.length ; i++){
-			ctx.fillStyle = ( i == 0 )? "green" : "white";
+			ctx.fillStyle = ( i === 0 )? "green" : "white";
 			ctx.fillRect(this.body[i].x,this.body[i].y, box, box);
 			ctx.strokeStyle = "red";
 			ctx.strokeRect(this.body[i].x,this.body[i].y, box, box);
