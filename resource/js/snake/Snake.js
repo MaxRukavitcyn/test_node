@@ -1,74 +1,15 @@
-'use strict';
-function randomX (box) {
-	return Math.floor(Math.random()*17+1) * box;
-}
-function randomY(box) {
-	return Math.floor(Math.random()*15+3) * box;
-}
+import {Game} from "./Game";
 
-export class Game {
-	constructor(ctx) {
-		Game.ctx = ctx;
-		Game.box = 32;
-		const ground = new Image();
-		ground.src = "./js/snake/img/ground.png";
-		Game.dead = new Audio();
-		Game.dead.src = "./js/snake/audio/dead.mp3";
-		this.score = 0;
-		let snake = new Snake(9 * Game.box, 10 * Game.box);
-		let items = [];
-		items.push(new Apple(Game.box));
-		items.push(new Fire(Game.box));
-		this.render(ground, snake, items);
-		Game.start = setInterval(() => this.render(ground, snake, items), 150);
-	}
-	render(ground, snake, items) {
-		Game.ctx.drawImage(ground, 0, 0);
-		items.forEach(item => item.drawSelf(Game.ctx));
-		snake.drawSelf(Game.ctx, Game.box);
-		if (snake.getHeadX() === items[0].x && snake.getHeadY() === items[0].y) { // if snake eat the food
-			this.score++;
-			snake.eat();
-			items[0].x = randomX(Game.box);
-			items[0].y = randomY(Game.box)
-			
-		} else if (snake.getHeadX() === items[1].x && snake.getHeadY() === items[1].y) { // if the snake eats the fire
-			this.score--;
-			snake.damage();
-			items[1].x = randomX(Game.box);
-			items[1].y = randomY(Game.box);
-		} else {
-			// remove the tail
-			snake.removeTail();
-		}
-		if (snake.isBodyZero()) {
-			clearInterval(Game.start);
-			return;
-		}
-		
-		let isCollision = snake.getHeadX() < Game.box || snake.getHeadX() > 17 * Game.box || snake.getHeadY() < 3 * Game.box || snake.getHeadY() > 17 * Game.box || snake.collision();
-		if (isCollision) {
-			clearInterval(Game.start);
-			Game.dead.play();
-			return;
-		}
-		
-		// render score
-		Game.ctx.fillStyle = "white";
-		Game.ctx.font = "45px Changa one";
-		Game.ctx.fillText(this.score,2 * Game.box,1.6 * Game.box);
-		
-		
-	}
-}
-
-class Snake {
+export class Snake {
 	constructor(x, y) {
 		this.body = [];
 		this.body.push({x: x, y: y});
 		this.move = 'stop';
 		this._resolveControl();
 		this.hitten = false;
+	}
+	cutBody() {
+		this.body.splice(1);
 	}
 	isBodyZero() {
 		return this.body.length === 0;
@@ -78,6 +19,12 @@ class Snake {
 	}
 	getHeadY() {
 		return this.body[0].y;
+	}
+	setHeadX(x) {
+		this.body[0].x = x;
+	}
+	setHeadY(y) {
+		this.body[0].y = y;
 	}
 	removeTail(isDamage) {
 		this.body.pop();
@@ -165,34 +112,4 @@ class Snake {
 		
 	}
 	
-}
-
-class Item {
-	constructor(box) {
-		this.x = randomX(box);
-		this.y = randomY(box);
-	}
-	drawSelf(ctx) {}
-}
-
-class Apple extends Item {
-	constructor(box) {
-		super(box);
-		this.appleImg = new Image();
-		this.appleImg.src = "./js/snake/img/food.png";
-	}
-	drawSelf(ctx) {
-		ctx.drawImage(this.appleImg, this.x, this.y);
-	}
-}
-
-class Fire extends Item {
-	constructor(box) {
-		super(box);
-		this.fireImg = new Image();
-		this.fireImg.src = "./js/snake/img/fire32.png";
-	}
-	drawSelf(ctx) {
-		ctx.drawImage(this.fireImg, this.x, this.y);
-	}
 }
