@@ -20,7 +20,7 @@ export class Game {
 		items.push(new Apple(Game.box));
 		items.push(new Fire(Game.box));
 		this.render(ground, snake, items);
-		Game.start = setInterval(() => this.render(ground, snake, items), 100);
+		Game.start = setInterval(() => this.render(ground, snake, items), 150);
 	}
 	render(ground, snake, items) {
 		Game.ctx.drawImage(ground, 0, 0);
@@ -35,13 +35,11 @@ export class Game {
 		} else if (snake.getHeadX() === items[1].x && snake.getHeadY() === items[1].y) { // if the snake eats the fire
 			this.score--;
 			snake.damage();
-			snake.removeTail();
 			items[1].x = randomX(Game.box);
 			items[1].y = randomY(Game.box);
 		} else {
 			// remove the tail
 			snake.removeTail();
-			snake.hitten = false;
 		}
 		if (snake.isBodyZero()) {
 			clearInterval(Game.start);
@@ -81,8 +79,11 @@ class Snake {
 	getHeadY() {
 		return this.body[0].y;
 	}
-	removeTail() {
+	removeTail(isDamage) {
 		this.body.pop();
+		if (!isDamage) {
+			this.hitten = false;
+		}
 	}
 	addNewHead(newHead) {
 		this.body.unshift(newHead);
@@ -128,6 +129,7 @@ class Snake {
 		damage.src = "./js/snake/audio/dead.mp3";
 		damage.play();
 		this.hitten = true;
+		this.removeTail(true);
 	}
 	collision() {
 		for (let i = 1; i < this.body.length; i++) {
