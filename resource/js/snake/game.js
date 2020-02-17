@@ -20,19 +20,12 @@ export class Game {
 		items.push(new Apple(Game.box));
 		items.push(new Fire(Game.box));
 		this.render(ground, snake, items);
-		Game.start = setInterval(() => this.render(ground, snake, items), 200);
+		Game.start = setInterval(() => this.render(ground, snake, items), 100);
 	}
 	render(ground, snake, items) {
 		Game.ctx.drawImage(ground, 0, 0);
 		items.forEach(item => item.drawSelf(Game.ctx));
 		snake.drawSelf(Game.ctx, Game.box);
-		let snakeHeadX = snake.getHeadX();
-		let snakeHeadY = snake.getHeadY();
-		if (snake.move === "LEFT") snakeHeadX -= Game.box;
-		if (snake.move === "UP") snakeHeadY -= Game.box;
-		if (snake.move === "RIGHT") snakeHeadX += Game.box;
-		if (snake.move === "DOWN") snakeHeadY += Game.box;
-		
 		if (snake.getHeadX() === items[0].x && snake.getHeadY() === items[0].y) { // if snake eat the food
 			this.score++;
 			snake.eat();
@@ -50,29 +43,24 @@ export class Game {
 			snake.removeTail();
 			snake.hitten = false;
 		}
+		if (snake.isBodyZero()) {
+			clearInterval(Game.start);
+			return;
+		}
 		
-		// create new head
-		let newHead = {
-			x: snakeHeadX,
-			y: snakeHeadY
-		};
-		
-		let isCollision = snakeHeadX < Game.box || snakeHeadX > 17 * Game.box || snakeHeadY < 3 * Game.box || snakeHeadY > 17 * Game.box || snake.collision();
+		let isCollision = snake.getHeadX() < Game.box || snake.getHeadX() > 17 * Game.box || snake.getHeadY() < 3 * Game.box || snake.getHeadY() > 17 * Game.box || snake.collision();
 		if (isCollision) {
 			clearInterval(Game.start);
 			Game.dead.play();
+			return;
 		}
-		if (!snake.hitten) {
-			snake.addNewHead(newHead);
-		}
+		
 		// render score
 		Game.ctx.fillStyle = "white";
 		Game.ctx.font = "45px Changa one";
 		Game.ctx.fillText(this.score,2 * Game.box,1.6 * Game.box);
 		
-		if (snake.body.length === 0) {
-			clearInterval(Game.start);
-		}
+		
 	}
 }
 
@@ -83,6 +71,9 @@ class Snake {
 		this.move = 'stop';
 		this._resolveControl();
 		this.hitten = false;
+	}
+	isBodyZero() {
+		return this.body.length === 0;
 	}
 	getHeadX() {
 		return this.body[0].x;
@@ -153,6 +144,22 @@ class Snake {
 			ctx.strokeStyle = "red";
 			ctx.strokeRect(this.body[i].x,this.body[i].y, box, box);
 		}
+		let snakeHeadX = this.getHeadX();
+		let snakeHeadY = this.getHeadY();
+		if (this.move === "LEFT") snakeHeadX -= Game.box;
+		if (this.move === "UP") snakeHeadY -= Game.box;
+		if (this.move === "RIGHT") snakeHeadX += Game.box;
+		if (this.move === "DOWN") snakeHeadY += Game.box;
+		
+		// create new head
+		let newHead = {
+			x: snakeHeadX,
+			y: snakeHeadY
+		};
+		
+		if (!this.hitten) {
+			this.addNewHead(newHead);
+		}
 		
 	}
 	
@@ -160,24 +167,30 @@ class Snake {
 
 class Item {
 	constructor(box) {
-		this.x = Math.floor(Math.random()*17+1) * box;
-		this.y = Math.floor(Math.random()*15+3) * box;
+		this.x = randomX(box);
+		this.y = randomY(box);
 	}
 	drawSelf(ctx) {}
 }
 
 class Apple extends Item {
+	constructor(box) {
+		super(box);
+		this.appleImg = new Image();
+		this.appleImg.src = "./js/snake/img/food.png";
+	}
 	drawSelf(ctx) {
-		const appleImg = new Image();
-		appleImg.src = "./js/snake/img/food.png";
-		ctx.drawImage(appleImg, this.x, this.y);
+		ctx.drawImage(this.appleImg, this.x, this.y);
 	}
 }
 
 class Fire extends Item {
+	constructor(box) {
+		super(box);
+		this.fireImg = new Image();
+		this.fireImg.src = "./js/snake/img/fire32.png";
+	}
 	drawSelf(ctx) {
-		const fireImg = new Image();
-		fireImg.src = "./js/snake/img/fire32.png";
-		ctx.drawImage(fireImg, this.x, this.y);
+		ctx.drawImage(this.fireImg, this.x, this.y);
 	}
 }
