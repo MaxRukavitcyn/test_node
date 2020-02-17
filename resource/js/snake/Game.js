@@ -81,8 +81,11 @@ export class Game {
 				snake.cutBody();
 				snake.move = 'stop';
 				this.startGame(this.scene);
+			} else {
+				Game.ctx.drawImage(gameOver, 0, 0);
+				return;
 			}
-			return;
+			
 		}
 		
 		// render score
