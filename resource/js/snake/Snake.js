@@ -1,12 +1,15 @@
 import {Game} from "./Game";
 
 export class Snake {
-	constructor(x, y) {
+	constructor({x, y}) {
 		this.body = [];
 		this.body.push({x: x, y: y});
 		this.move = 'stop';
 		this._resolveControl();
 		this.hitten = false;
+	}
+	getLength() {
+		return this.body.length;
 	}
 	cutBody() {
 		this.body.splice(1);
