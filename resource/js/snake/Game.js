@@ -35,7 +35,7 @@ export class Game {
 	}
 	startGame(scene) {
 		this.render(scene);
-		Game.start = setInterval(() => this.render(scene), 50);
+		Game.start = setInterval(() => this.render(scene), 150);
 	}
 	render(scene) {
 		let {snake, ground, items, gameOver, heart} = scene;
@@ -101,5 +101,8 @@ export class Game {
 		Game.ctx.fillStyle = "white";
 		Game.ctx.font = "45px Changa one";
 		Game.ctx.fillText(this.lives,5.2 * Game.box,1.6 * Game.box);
+	}
+	getScores() {
+		return this.score;
 	}
 }

@@ -39,4 +39,12 @@ paths.post('/db/delete/equations', cors(corsOptions), (request, response) => {
 	response.send('deleted');
 });
 
+paths.post('/db/add/snake_user', cors(corsOptions), (request, response) => {
+	let user = JSON.parse(request.body);
+	client.query(`insert into snake_users (name, scores) values ($1, $2) returning id`, [user.name, user.scores]).then(data => {
+		response.send(data);
+	});
+
+});
+
 module.exports = paths;

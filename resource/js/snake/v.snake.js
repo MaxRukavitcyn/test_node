@@ -9,19 +9,20 @@ let vActionScreen = {
                </div>`,
 	data() {
 		return {
-			isGameOver: false
+			isGameOver: false,
+			game: {}
 		}
 	},
 	mounted() {
 		const cvs = this.$refs.snake;
 		const ctx = cvs.getContext("2d");
-		let game = new Game(ctx, cvs);
+		this.game = new Game(ctx, cvs);
 		let self = this;
-		document.addEventListener('GameOverEvent', () => self.isGameOver = true)
+		document.addEventListener('GameOverEvent', () => {self.isGameOver = true; this.gameOver()})
 	},
 	methods: {
 		gameOver() {
-		
+			iHttp.post('/db/add/snake_user', {name: this.$parent.$data.userName, scores: this.game.getScores()}).then(data => console.log(data));
 		}
 	}
 };
@@ -65,7 +66,7 @@ let vStartScreen = {
 		},
 		startGame() {
 			if (this.userName) {
-				this.$emit('start')
+				this.$emit('start', this.userName);
 			} else {
 				this.showHint = true
 			}
@@ -87,11 +88,13 @@ export let vSnake = {
 	components: {'v-start-screen': vStartScreen, 'v-action-screen': vActionScreen},
 	data() {
 		return {
-			isStart: false
+			isStart: false,
+			userName: ''
 		}
 	},
 	methods: {
-		startGame() {
+		startGame(userName) {
+			this.userName = userName;
 			this.isStart = true;
 		}
 	}
