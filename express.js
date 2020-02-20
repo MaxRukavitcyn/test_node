@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require("body-parser");
 const apiController = require('./server/core/controllers/apiController');
