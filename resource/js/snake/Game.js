@@ -5,9 +5,11 @@ import {Apple, Fire} from "./Items";
 
 
 export class Game {
-	constructor(ctx) {
+	constructor(ctx, cvs) {
+		this.cvs = cvs;
 		Game.ctx = ctx;
 		Game.box = 32;
+		Game.centerScene = {x: 9 * Game.box, y: 10 * Game.box};
 		this.lives = 3;
 		let ground = new Image();
 		ground.src = "./js/snake/img/ground.png";
@@ -18,7 +20,7 @@ export class Game {
 		Game.dead = new Audio();
 		Game.dead.src = "./js/snake/audio/dead.mp3";
 		this.score = 0;
-		let snake = new Snake(9 * Game.box, 10 * Game.box);
+		let snake = new Snake(Game.centerScene);
 		let items = [];
 		items.push(new Apple(Game.box));
 		items.push(new Fire(Game.box));
@@ -60,7 +62,7 @@ export class Game {
 			clearInterval(Game.start);
 			this.lives--;
 			if (this.lives > 0) {
-				snake.addNewHead({x: 9 * Game.box, y: 10 * Game.box});
+				snake.addNewHead(Game.centerScene);
 				snake.move = 'stop';
 				this.startGame(this.scene);
 			}
@@ -76,13 +78,15 @@ export class Game {
 			Game.dead.play();
 			this.lives--;
 			if (this.lives > 0) {
-				snake.setHeadX(9 * Game.box);
-				snake.setHeadY(10 * Game.box);
+				snake.setHeadX(Game.centerScene.x);
+				snake.setHeadY(Game.centerScene.y);
 				snake.cutBody();
 				snake.move = 'stop';
 				this.startGame(this.scene);
 			} else {
 				Game.ctx.drawImage(gameOver, 0, 0);
+				let GameOverEvent = new Event('GameOverEvent');
+				document.dispatchEvent(GameOverEvent);
 				return;
 			}
 			
@@ -97,5 +101,8 @@ export class Game {
 		Game.ctx.fillStyle = "white";
 		Game.ctx.font = "45px Changa one";
 		Game.ctx.fillText(this.lives,5.2 * Game.box,1.6 * Game.box);
+	}
+	getScores() {
+		return this.score;
 	}
 }
