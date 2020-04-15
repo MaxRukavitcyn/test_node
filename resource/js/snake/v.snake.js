@@ -55,7 +55,7 @@ let vStartScreen = {
 		}
 	},
 	created() {
-	
+		console.log('test');
 	},
 	mounted() {
 	
