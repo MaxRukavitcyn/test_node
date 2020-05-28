@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const DB = require('../data/dataBaseTemp');
+
 const paths = express();
 
 let corsOptions = {
