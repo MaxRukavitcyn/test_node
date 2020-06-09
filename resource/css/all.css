@@ -142,3 +142,11 @@
 .vue-dynamic-select .search:focus {
     outline: none;
 }
+
+.key-digits {
+    margin-bottom: 5px;
+}
+
+.container-calc {
+    width: 25%;
+}

@@ -4,4 +4,4 @@ import {vm} from "./vue/general/main.model";
 import {globalNinja} from "./ninja/ninja";
 // new TestProxy().test();
 
-alert('Hello, lets go drink!!!');
+// alert('Hello, lets go drink!!!');
