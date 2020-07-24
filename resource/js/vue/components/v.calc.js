@@ -50,6 +50,9 @@ export let vCalc = {
 			isReset: false
 		}
 	},
+        created() {
+                alert('Hey you, let'go drink');
+        },
 	methods: {
 		addDigits(digit) {
 			if (this.isReset) {
