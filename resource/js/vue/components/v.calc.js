@@ -51,7 +51,7 @@ export let vCalc = {
 		}
 	},
         created() {
-                alert('Hey you, let'go drink');
+                alert("Hey you, let'go drink");
         },
 	methods: {
 		addDigits(digit) {
