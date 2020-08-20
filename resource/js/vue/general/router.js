@@ -7,6 +7,7 @@ import {vFilms} from "../components/v.films";
 import {vCarusel} from "../components/test.vutify";
 import {vEquations} from "../components/v.equations";
 import {vSnake} from "../../snake/v.snake";
+import {vCalc} from "../components/v.calc";
 
 export let routes = [
 	{path: '/tree', component: vTreeComp, props:{query: {url:'/tree',params: 'key=treeData'}}},
@@ -17,5 +18,6 @@ export let routes = [
 	{path: '/films', component: vFilms},
 	{path: '/carusel', component: vCarusel},
 	{path: '/liner/equations', component: vEquations},
-	{path: '/snake', component: vSnake}
+	{path: '/snake', component: vSnake},
+	{path: '/calc', component: vCalc}
 ];
