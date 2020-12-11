@@ -9,9 +9,9 @@ export let vTestCamera = {
 	data() {
 		return {}
 	},
-	create() {
+	mounted() {
 		navigator.webkitGetUserMedia('audio, video', function(localMediaStream) {
-			var video = document.querySelector('video');
+			var video = document.getElementById('video');
 			video.src = window.webkitURL.createObjectURL(localMediaStream);
 		}, onFailSoHard);
 		
