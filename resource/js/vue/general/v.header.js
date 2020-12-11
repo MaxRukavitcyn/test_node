@@ -20,7 +20,8 @@ export let vHeader = {
 				{title: 'Карусель', path: '/carusel'},
 				{title: 'Уравнения', path: '/liner/equations'},
 				{title: 'Змейка', path: '/snake'},
-				{title: 'Калькулятор', path: '/calc'}
+				{title: 'Калькулятор', path: '/calc'},
+				{title: 'Тест вебки', path: '/test_camera'}
 			]
 		}
 	}
