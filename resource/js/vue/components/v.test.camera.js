@@ -10,13 +10,13 @@ export let vTestCamera = {
 		return {}
 	},
 	mounted() {
-		let video = document.getElementById('video');
 		// Выбирает разрешение камеры близкое к 1280x720.
 		let constraints = { audio: false, video: { width: 1280, height: 720 } };
 		
 		navigator.mediaDevices.getUserMedia(constraints)
 			.then(function(mediaStream) {
-				var video = document.querySelector('video');
+				let video = document.getElementById('video');
+				
 				video.srcObject = mediaStream;
 				video.onloadedmetadata = function(e) {
 					video.play();
