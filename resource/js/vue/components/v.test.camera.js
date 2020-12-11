@@ -10,20 +10,18 @@ export let vTestCamera = {
 		return {}
 	},
 	mounted() {
-		var video = document.querySelector('video');
+		let video = document.getElementById('video');
+		// Выбирает разрешение камеры близкое к 1280x720.
+		let constraints = { audio: false, video: { width: 1280, height: 720 } };
 		
-		if (navigator.getUserMedia) {
-			navigator.getUserMedia({audio: true, video: true}, function(stream) {
-				video.src = stream;
-			}, onFailSoHard);
-		} else if (navigator.webkitGetUserMedia) {
-			navigator.webkitGetUserMedia('audio, video', function(stream) {
-				video.src = window.webkitURL.createObjectURL(stream);
-			}, onFailSoHard);
-		} else {
-			video.src = 'somevideo.webm'; // fallback.
-		}
-		
-		function onFailSoHard() {}
+		navigator.mediaDevices.getUserMedia(constraints)
+			.then(function(mediaStream) {
+				var video = document.querySelector('video');
+				video.srcObject = mediaStream;
+				video.onloadedmetadata = function(e) {
+					video.play();
+				};
+			})
+			.catch(function(err) { console.log(err.name + ": " + err.message); }); // always check for errors at the end.
 	}
 }
