@@ -10,5 +10,5 @@ function f(hui: string): string {
     return "hui "+ hui;
 }
 
-let hui = new Hui();
-console.log(hui);
+// let hui = new Hui();
+// console.log(hui);
