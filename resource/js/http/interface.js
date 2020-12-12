@@ -28,6 +28,21 @@ export let iHttp = {
 			method: 'post',
 			body: JSON.stringify(data)
 		})
+	},
+	sendBlob(url, data) {
+		var formData = new FormData(),
+			blobImage = data
+
+		formData.append('xhr', 'works!');
+		formData.append('test.jpg', blobImage, 'test.jpg');
+
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', baseUrl + url, true);
+		xhr.onload = function(e){
+			console.log('selfreaded ', xhr);
+			// form.append(xhr.responseText);
+		};
+		xhr.send(formData);
 	}
 };
 
