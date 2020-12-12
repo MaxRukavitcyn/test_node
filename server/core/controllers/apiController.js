@@ -6,7 +6,8 @@ const multer = require("multer")
 let upload = multer({dest: "uploads/"});
 let type = upload.single("test.jpg")
 const fs = require("fs");
-const nodemailer = require('nodemailer')
+const nodemailer = require('nodemailer');
+const path = require('path');
 
 let corsOptions = {
 	origins: ['http://localhost:8080', 'http://localhost'],
@@ -28,12 +29,12 @@ let corsOptions = {
 		to: 'maxrukav@mail.ru',
 		subject: 'Message from Node js',
 		text: 'This message was sent from Node js server.',
-		attachments: [{ filename: filename + '.jpg', path: '/Users/Максим/Desktop/test_node/uploads/' + filename }]
+		attachments: [{ filename: filename + '.jpg', path: path.resolve(__dirname, '../../../uploads', filename)}]
 	})
 	
 	console.log(result);
 	setTimeout(()=>{
-		fs.unlinkSync('/Users/Максим/Desktop/test_node/uploads/' + filename)
+		fs.unlinkSync(path.resolve(__dirname, '../../../uploads', filename))
 	}, 10000)
 	
 }
