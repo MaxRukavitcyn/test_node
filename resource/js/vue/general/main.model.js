@@ -9,12 +9,12 @@ let router = new VueRouter({
 
 let template = `
 	<v-app>
-        <v-content>
+        <v-main>
             <v-container>
                 <v-header></v-header>
                 <router-view></router-view>
             </v-container>
-        </v-content>
+        </v-main>
     </v-app>
 `;
 
