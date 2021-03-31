@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const DB = require('../data/dataBaseTemp');
+// const DB = require('../data/dataBaseTemp');
 const paths = express();
 const multer = require("multer")
 let upload = multer({dest: "uploads/"});
@@ -76,15 +76,15 @@ paths.post('/add/action', cors(corsOptions), (request, response) => {
 	console.log(body);
 	response.send(actionList)
 });
-paths.post('/test/post', cors(corsOptions), (request, response) => {
-	let body = JSON.parse(request.body);
-	console.log(body);
-	DB.db.usersStorage = body;
-	response.send('data is received');
-});
-paths.get('/users', cors(corsOptions), (request, response) => {
-	response.send(DB.db.usersStorage);
-});
+// paths.post('/test/post', cors(corsOptions), (request, response) => {
+// 	let body = JSON.parse(request.body);
+// 	console.log(body);
+// 	DB.db.usersStorage = body;
+// 	response.send('data is received');
+// });
+// paths.get('/users', cors(corsOptions), (request, response) => {
+// 	response.send(DB.db.usersStorage);
+// });
 paths.get('/action/list', cors(corsOptions), (req, res)=>{
 	res.send(actionList);
 });

@@ -150,3 +150,19 @@
 .container-calc {
     width: 270px;
 }
+
+.field {
+     width: 182px;
+     height: 182px;
+     border: black 1px solid;
+     display: flex;
+     flex-wrap: wrap
+ }
+.cell {
+    width: 60px;
+    height: 60px;
+    border: black 1px solid;
+    font-size: 45px;
+    display: flex;
+    justify-content: center;
+}

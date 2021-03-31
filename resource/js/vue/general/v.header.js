@@ -1,17 +1,15 @@
 let template = `
-	<v-toolbar dense style="background: aliceblue">
-        <v-toolbar-title v-text="'Application'"></v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-toolbar-items>
-            <v-btn text v-for="btn in buttons" :to="btn.path">{{btn.title}}</v-btn>
-        </v-toolbar-items>
-    </v-toolbar>
+	<div>
+	    <v-tabs background-color="blue lighten-4">
+	    	<v-tab text v-for="tab in tabs" :to="tab.path">{{tab.title}}</v-tab>
+	    </v-tabs>
+    </div>
 `;
 export let vHeader = {
 	template,
 	data() {
 		return {
-			buttons: [
+			tabs: [
 				{title: 'Дерево', path: '/tree'},
 				{title: 'Список', path: '/list/name'},
 				{title: 'Дерево свое хрень', path: '/tree/custom'},
@@ -21,7 +19,8 @@ export let vHeader = {
 				{title: 'Уравнения', path: '/liner/equations'},
 				{title: 'Змейка', path: '/snake'},
 				{title: 'Калькулятор', path: '/calc'},
-				{title: 'Тест вебки', path: '/test_camera'}
+				{title: 'Тест вебки', path: '/test_camera'},
+				{title: 'Крестики-нолики', path: '/cross_and_zero'}
 			]
 		}
 	}

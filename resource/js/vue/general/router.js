@@ -9,6 +9,7 @@ import {vEquations} from "../components/v.equations";
 import {vSnake} from "../../snake/v.snake";
 import {vCalc} from "../components/v.calc";
 import {vTestCamera} from "../components/v.test.camera";
+import {vCrossAndZero} from "../components/v.cross_and_zero";
 
 export let routes = [
 	{path: '/tree', component: vTreeComp, props:{query: {url:'/tree',params: 'key=treeData'}}},
@@ -21,5 +22,6 @@ export let routes = [
 	{path: '/liner/equations', component: vEquations},
 	{path: '/snake', component: vSnake},
 	{path: '/calc', component: vCalc},
-	{path: '/test_camera', component: vTestCamera}
+	{path: '/test_camera', component: vTestCamera},
+	{path: '/cross_and_zero', component: vCrossAndZero}
 ];
