@@ -1,3 +1,15 @@
+Vue.component('v-custom-button', {
+	template: `
+		<v-btn :color="this.color" @click="$emit('push')" ><slot></slot></v-btn>
+	`,
+	props: ['color'],
+	data() {
+		return {
+		
+		}
+	}
+})
+
 let template = `
 <div>
 	<div class="container-calc">
@@ -9,28 +21,28 @@ let template = `
         ></v-text-field>
         <div class="key-buttons">
         	<div class="key-digits">
-	            <v-btn color="primary" @click="reset">СЕ</v-btn>
-	            <v-btn color="primary" @click="countInterest">%</v-btn>
-	            <v-btn color="primary" @click="back"><-</v-btn>
-	            <v-btn color="primary" @click="doAction('/')">/</v-btn>
+                <v-custom-button :color="colorBtn" @push="reset">СЕ</v-custom-button>
+	            <v-custom-button :color="colorBtn" @push="countInterest">%</v-custom-button>
+	            <v-custom-button :color="colorBtn" @push="back"><-</v-custom-button>
+	            <v-custom-button :color="colorBtn" @push="doAction('/')">/</v-custom-button>
 			</div>
         	<div class="key-digits">
 	            <v-btn color="primary" @click="addDigits(1)">1</v-btn>
 	            <v-btn color="primary" @click="addDigits(2)">2</v-btn>
 	            <v-btn color="primary" @click="addDigits(3)">3</v-btn>
-	            <v-btn color="primary" @click="doAction('*')">*</v-btn>
+	            <v-custom-button :color="colorBtn" @click="doAction('*')">*</v-custom-button>
 			</div>
 			<div class="key-digits">
 	            <v-btn color="primary" @click="addDigits(4)">4</v-btn>
 	            <v-btn color="primary" @click="addDigits(5)">5</v-btn>
 	            <v-btn color="primary" @click="addDigits(6)">6</v-btn>
-	            <v-btn color="primary" @click="doAction('+')">+</v-btn>
+	            <v-custom-button :color="colorBtn" @push="doAction('+')">+</v-custom-button>
 			</div>
 			<div class="key-digits">
 	            <v-btn color="primary" @click="addDigits(7)">7</v-btn>
 	            <v-btn color="primary" @click="addDigits(8)">8</v-btn>
 	            <v-btn color="primary" @click="addDigits(9)">9</v-btn>
-	            <v-btn color="primary" @click="doAction('-')">-</v-btn>
+	            <v-custom-button :color="colorBtn" @push="doAction('-')">-</v-custom-button>
 			</div>
 			<v-btn color="green" style="width: 100%" @click="countResult">=</v-btn>
 		</div>
@@ -47,11 +59,12 @@ export let vCalc = {
 			digitsInput: '',
 			one: '',
 			action: '',
-			isReset: false
+			isReset: false,
+			colorBtn: '#07a325'
 		}
 	},
         created() {
-                alert("Hey you, let'go drink");
+                //alert("Hey you, let'go drink");
         },
 	methods: {
 		addDigits(digit) {
