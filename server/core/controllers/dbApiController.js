@@ -24,13 +24,16 @@ paths.get('/db/equations', cors(corsOptions), (request, response) =>{
 		let res = data;
 		if(!Array.isArray(res)) res = data.rows;
 		response.send(res);
-	})
+	}).catch(e => console.log(e));
+});
+paths.get('/db/settings', cors(corsOptions), (request, response) =>{
+	response.send(process.env.DATABASE_URL)
 });
 paths.post('/db/add/equation', cors(corsOptions), (request, response) => {
 	let body = JSON.parse(request.body);
 	client.query('insert into equations (equation) values ($1) returning id', [body.equation]).then(d=>{
 		response.send(d);
-	});
+	}).catch(e => console.log(e));
 });
 paths.post('/db/delete/equations', cors(corsOptions), (request, response) => {
 	let ids = JSON.parse(request.body);
