@@ -56,7 +56,7 @@ export let vEquations = {
     },
     created() {
         iHttp.get('/db/equations').then(list=>{
-            this.equations.push(...list.map(e => Object.assign({id: e.id}, getSolutionLineEquation(e.equation))));
+            this.equations.push(...list.map(e => Object.assign({id: e.id}, getSolutionLineEquation(e.equations))));
         })
     },
 	methods: {
