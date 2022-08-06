@@ -69,7 +69,7 @@ export let vEquations = {
     		
 	    },
 		addEquation(){
-    		iHttp.post('/db/add/equation', {equation: this.equationText}).then(d=>location.reload())
+    		iHttp.post('/db/add/equation', {equations: this.equationText}).then(d=>location.reload())
 		}
 	}
 };

@@ -31,7 +31,7 @@ paths.get('/db/settings', cors(corsOptions), (request, response) =>{
 });
 paths.post('/db/add/equation', cors(corsOptions), (request, response) => {
 	let body = JSON.parse(request.body);
-	client.query('insert into equations (equation) values ($1) returning id', [body.equation]).then(d=>{
+	client.query('insert into equations (equations) values ($1) returning id', [body.equations]).then(d=>{
 		response.send(d);
 	}).catch(e => console.log(e));
 });
