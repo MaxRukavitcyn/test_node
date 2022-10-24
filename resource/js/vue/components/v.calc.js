@@ -30,7 +30,7 @@ let template = `
 	            <v-btn color="primary" @click="addDigits(1)">1</v-btn>
 	            <v-btn color="primary" @click="addDigits(2)">2</v-btn>
 	            <v-btn color="primary" @click="addDigits(3)">3</v-btn>
-	            <v-custom-button :color="colorBtn" @click="doAction('*')">*</v-custom-button>
+	            <v-custom-button :color="colorBtn" @push="doAction('*')">*</v-custom-button>
 			</div>
 			<div class="key-digits">
 	            <v-btn color="primary" @click="addDigits(4)">4</v-btn>
@@ -63,9 +63,6 @@ export let vCalc = {
 			colorBtn: '#07a325'
 		}
 	},
-        created() {
-                //alert("Hey you, let'go drink");
-        },
 	methods: {
 		addDigits(digit) {
 			if (this.isReset) {
