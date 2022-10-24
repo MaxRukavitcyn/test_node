@@ -1,6 +1,9 @@
 {
   "name": "expressapp",
   "version": "1.0.0",
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "bluebird": "3.7.0",
     "body-parser": "^1.19.0",
