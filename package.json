@@ -19,7 +19,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production --openssl-legacy-provider start",
     "run": "node express",
     "debugger": "node --inspect express"
   },
