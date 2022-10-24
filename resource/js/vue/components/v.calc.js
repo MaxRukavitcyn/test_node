@@ -17,7 +17,7 @@ let template = `
               style="width: 100%"
               v-model="digitsInput"
               :counter="100"
-              disabled="true"
+              :disabled="true"
         ></v-text-field>
         <div class="key-buttons">
         	<div class="key-digits">
